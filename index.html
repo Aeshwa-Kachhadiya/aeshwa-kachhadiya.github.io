@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeshwa Kachhadiya - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #FAF8F1;
+            color: #232323;
+            line-height: 1.5;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(35, 35, 35, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #232323;
+            font-family: 'Bell MT', 'Georgia', serif;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #232323;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 80%;
+            height: 2px;
+            background: #232323;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        nav a.active {
+            opacity: 1;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 11rem 2rem 4rem;
+        }
+
+        #about {
+        padding-top: 3.5rem;
+        }
+
+        #contact {
+        padding-top: 3.5rem;
+        }
+
+        #skills {
+        padding-top: 3.5rem;
+        }
+
+        #projects { 
+        padding-top: 3.5rem;
+        }
+
+        #experience {
+        padding-top: 3.5rem;
+        }
+        
+        #achievements {
+        padding-top: 3.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #85193C 0%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        h2 {
+            font-size: clamp(32px, 8vw, 80px);
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.3;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        h4 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+        .stagger-6 { animation-delay: 0.6s; }
+
+        .tagline {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: normal;
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.4;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.85;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            animation: fadeInUp 1s ease 0.6s both;
+            text-align: left;
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease;
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border: 1px solid #232323;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 600;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(35, 35, 35, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+    background: #85193C;
+    color: white;
+    transition: all 0.3s ease;
+        }
+
+        .btn-primary::before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+    background: white;
+    color: #85193C;
+    border-color: #85193C;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(133, 25, 60, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #232323;
+            border-color: #232323;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(133, 25, 60, 0.05);
+            border-color: #85193C;
+            color: #85193C;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(133, 25, 60, 0.3);
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid rgba(35, 35, 35, 0.1);
+            border-radius: 16px; 
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(35, 35, 35, 0.03), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            background: rgba(133, 25, 60, 0.05);
+            border-color: rgba(133, 25, 60, 0.5);
+            box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+            line-height: 1.4;
+        }
+
+        .card:hover h3 {
+            color: #555;
+        }
+
+        .card p {
+            opacity: 0.85;
+            line-height: 1.5;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        .card:hover p {
+            opacity: 1;
+        }
+
+        .card ul {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Highlights */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            background: white;
+            border: 1px solid rgba(35, 35, 35, 0.1);
+            padding: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(35, 35, 35, 0.02) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(35, 35, 35, 0.3);
+        }
+
+        .highlight-card:hover::after {
+            opacity: 1;
+        }
+
+        .highlight-label {
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .highlight-card:hover .highlight-label {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .highlight-value {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Georgia, 'Times New Roman', serif;
+            transition: all 0.3s;
+            line-height: 1.3;
+        }
+
+        .highlight-card:hover .highlight-value {
+            transform: scale(1.05);
+            color: #555;
+        }
+
+        /* White Section */
+        .bg-white {
+            background: white;
+        }
+
+        /* Project Item */
+        .project-item {
+            background: white;
+            border: 1px solid rgba(35, 35, 35, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;  /* <-- Changed: Makes it vertical */
+            gap: 0;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            max-width: 100%;
+        }
+
+        .project-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-item:hover {
+            border-color: rgba(35, 35, 35, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
+            width: 100%;  /* <-- Add this */
+            height: 300px;
+            min-height: 300px;
+            max-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .project-content {
+            padding: 3rem;
+        }
+
+        .project-content h3 {
+            font-size: 24px;
+            line-height: 1.3;
+        }
+
+        .project-content p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .project-content h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .project-content ul li {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            font-size: 13px;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(35, 35, 35, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .tag:hover {
+            background: #85193C;
+            color: white;
+            border-color: #85193C;
+            transform: translateY(-2px);
+        }
+
+        /* Parallax Effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Cursor Trail */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: #232323;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        /* Page Transition */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #232323;
+            z-index: 10000;
+            transform: translateY(-100%);
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .page-transition.active {
+            transform: translateY(0);
+        }
+
+        /* Contact Form */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(35, 35, 35, 0.2);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .project-item, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 6rem 1.5rem 3rem;
+            }
+        }
+
+        .skill-pill {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(35, 35, 35, 0.2);
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            /* NEW Projects Grid Styles - Add these */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Projects Grid Styles */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid rgba(35, 35, 35, 0.1);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card:hover {
+    border-color: rgba(133, 25, 60, 0.5);
+    box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
+    transform: translateY(-10px);
+}
+
+.project-card .project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.project-card .project-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card .project-content h3 {
+    font-size: 18px;
+    margin-bottom: 0.75rem;
+}
+
+.project-card .project-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive for projects only */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+            background: rgba(133, 25, 60, 0.08);
+            border-color: rgba(133, 25, 60, 0.5);
+            box-shadow: 0 8px 20px rgba(133, 25, 60, 0.2);
+            transform: translateY(-3px);
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <!-- <img src="Photu.png" alt="Aeshwa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"> -->
+                <!-- <div class="logo">Aeshwa</div> -->
+            </div>
+            <nav>
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#achievements">Achievements</a>
+                <a href="#contact">Contact</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+
+            <div style="background: rgba(139, 0, 70, 0.15); border: 1px solid rgba(139, 0, 70, 0.3); border-radius: 50px; padding: 0.5rem 2rem; margin-bottom: rem; font-size: 14px; font-weight: 500; color: #85193C;">
+                Hello World! I'm
+            </div>
+            <h1 style="font-size: clamp(36px, 6vw, 64px); margin-bottom: 1.5rem;">AESHWA KACHHADIYA</h1>
+            <div style="font-size: 20px; margin-bottom: 2rem; min-height: 30px;">
+                I'm  <span id="rotating-text" style="font-weight: 600; color: #85193C;">tech enthusiast</span>
+            </div>
+            <p class="description animate-in stagger-4" style="text-align: center; margin: 0 auto;">
+                Converting complex datasets into clear, actionable narratives that empower smarter business decisions and measurable growth.
+            </p>
+            <div style="display: flex; gap: 1rem; margin-bottom: 3rem; margin-top: 2rem;" class="animate-in stagger-5">
+                              <a href="#contact" class="btn btn-secondary">✉ Get In Touch</a>
+            </div>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; max-width: 800px; margin: 0 auto;">
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    SQL
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Python
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Power BI/ Tableau
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Statistics
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Machine Learning
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Data Visualization
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Excel
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
+                    Data Storytelling
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    
+    <section id="about" class="bg-white">
+        <div class="container">
+            <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">ABOUT ME</h2>
+            
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3>My Background</h3>
+                <p>
+<strong>Data Analyst</strong> with <strong>2+ years of experience</strong> delivering actionable insights through <strong>data analysis</strong>, reporting, and executive dashboards. Currently pursuing a <strong>Master's in Data Science</strong> at the University of North Texas while working as a <strong>Data Analyst (Student Assistant)</strong>, I specialize in transforming complex datasets into clear, business-ready insights. Proficient in <strong>Python, SQL, Excel, Power BI, and Tableau</strong>, with hands-on experience in <strong>data cleaning, ETL processes</strong>, and KPI reporting. Strong foundation in <strong>statistical analysis</strong>, data quality management, and stakeholder collaboration, with the ability to manage multiple priorities and support data-driven decision-making.
+</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Education</h3>
+                    <p><strong>Master of Science in Data Science</strong></p>
+                    <p>University of North Texas</p>
+                    <p>Denton, TX | Aug 2025 - May 2027</p>
+                    <br>
+                    <p><strong>Bachelor of Engineering in Computer Engineering</strong></p>
+                    <p>LDRP Institute of Technology and Research</p>
+                    <p>Gandhinagar, India | Oct 2021 - July 2025</p>
+                </div>
+                <div class="card">
+    <h3>Technical Strengths</h3>
+    <ul style="opacity: 0.7;">
+    <li><strong>Data Analysis & Reporting</strong> (Advanced Excel, Pivot Tables, Power Query, KPI reporting, trend analysis)</li>
+
+    <li><strong>SQL & Databases</strong> (PostgreSQL, MySQL, MS SQL Server, joins, CTEs, data extraction)</li>
+
+    <li><strong>Business Intelligence & Visualization</strong> (Power BI, Tableau, dashboards, data storytelling)</li>
+
+    <li><strong>Python for Data Analysis</strong> (Pandas, NumPy, data cleaning, automation)</li>
+
+    <li><strong>Statistics & Analytics</strong> (Descriptive statistics, hypothesis testing, A/B testing)</li>
+
+    <li><strong>Data Management</strong> (Data cleaning, transformation, ETL basics)</li>
+
+    <li><strong>Business & Communication</strong> (Stakeholder communication, insight presentation)</li>
+</ul>
+
+</div>
+            </div>
+        </div>
+    </section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 3rem;">PROJECTS</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            
+           
+
+            <!-- Project 2: Vendor Performance -->
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+                    <img src="vendor photo.png" alt="Vendor Performance" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Vendor Analytics & Profit Optimization Platform </h3>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Automated procurement analytics platform using <strong>ML-based vendor scoring</strong> and <strong>statistical testing</strong>, achieving <strong>95% reduction</strong> in <strong>manual reporting</strong> and <strong>5-15% profit improvement.</strong></p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span class="tag">SQL/SQLAlchemy</span>
+                        <span class="tag">ETL Pipelines</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Statistical Testing</span>
+                        <span class="tag">Data Automation</span>
+                        <span class="tag">Excel/Power BI</span>
+                        <span class="tag">Dashboard Development</span>
+                        <span class="tag">Streamlit</span>
+                   
+                        
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Customer Segmentation Analysis -->
+<div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+     onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+     onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+    <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+        <img src="Customer Segment Analysis.png" alt="Customer Segmentation Analysis" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Customer Segmentation & Marketing Analytics Platform</h3>
+        <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Data-driven customer segmentation solution using <strong>RFM analysis</strong> and <strong>K-Means clustering</strong>, delivering <strong>15-25% increase</strong> in <strong>marketing ROI</strong> and <strong>30-40% improvement</strong> in <strong>customer retention</strong> through targeted strategies.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">K-Means Clustering</span>
+            <span class="tag">RFM Analysis</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Customer Analytics</span>
+            <span class="tag">Business Intelligence</span>
+            <span class="tag">Marketing Strategy</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+            <a href="https://github.com/Aeshwa-Kachhadiya/Customer-segmentation-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+        </div>
+    </div>
+</div>
+
+ <!-- Project 1: Energy Consumption -->
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+                    <img src="Energy_Comsumption_image.png" alt="Energy Consumption" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Energy Consumption Analysis </h3>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas/NumPy</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">LightGBM/XGBoost</span>
+                        <span class="tag">Time Series Forecasting</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Feature Engineering</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Model Deployment</span>
+                        <span class="tag">Predictive Modeling</span>
+                        <span class="tag">Business Intelligence</span>
+
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project 3: Skin Disease Analysis -->
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+                    <img src="multimodal skin disease analysis.png" alt="Skin Disease Analysis" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Multimodal Skin Disease Analysis</h3>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Built multimodal AI system combining <strong>CNN, NLP,</strong> and <strong>audio analysis</strong> to classify 7 skin diseases with <strong>85.7% accuracy</strong> and <strong>real-time diagnosis under 5 seconds.</strong></p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">NLP (DistilBERT)</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Multimodal AI</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">API Integration</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Deep Learning</span>
+
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Multimodel-skin-disease-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+     onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+     onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+    <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+        <img src="Health data analysis image.png" alt="Healthcare Data Analytics" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+    <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+        <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Healthcare Data Analytics</h3>
+        <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Analyzed patient health data to identify <strong>35% higher hospital costs</strong> linked to obesity and delivered <strong>evidence-based recommendations</strong> for preventive care programs and <strong>resource optimization</strong> across hospital tiers.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+            <span class="tag">Excel</span>
+            <span class="tag">Statistical Analysis</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Pivot Tables</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">Feature Engineering</span>
+            <span class="tag">Healthcare Analytics</span>
+            <span class="tag">Correlation Analysis</span>
+            <span class="tag">Patient Segmentation</span>
+            <span class="tag">Dashboard Design</span>
+            <span class="tag">Business Intelligence</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+            <a href="https://github.com/Aeshwa-Kachhadiya/Healthcare_Data_Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+        </div>
+    </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+            
+
+ <!-- Experience Section -->
+<section id="experience" class="bg-white">
+    <div class="container">
+        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">EXPERIENCE</h2>
+
+        <div class="card" style="margin-bottom: 2rem; position: relative;">
+        <span class="tag" style="position: absolute; top: 2rem; right: 2rem;">Current</span>
+        <h3>Data Analyst (Student Assistant)</h3>
+        <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">University of North Texas</p>
+        <p style="opacity: 0.6; margin-bottom: 1rem;">Denton, Texas | Oct 2025 - Present</p>
+         <ul>
+      <li>Manage university databases using <strong>MS Access</strong> and <strong>Excel</strong>, ensuring data accuracy for departmental operations and financial reporting</li>
+      <li>Process large-scale datasets from <strong>CSV files</strong>, standardizing formats and resolving inconsistencies for analysis-ready data</li>
+      <li>Build <strong>interactive dashboards</strong> and executive reports that translate financial metrics into actionable business insights</li>
+      <li>Streamline data pipelines to improve processing efficiency by 30% and accelerate decision-making timelines</li>
+    </ul>
+    </div>
+
+    
+
+
+    <div class="experience-section">
+  <!-- Experience 1: Data Analyst - Kinetiq Software Services -->
+  <div class="card" style="margin-bottom: 2rem;">
+    <h3>Data Analyst</h3>
+    <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">Kinetiq Software Services · Full-time</p>
+    <p style="opacity: 0.6; margin-bottom: 1rem;">Ahmedabad, Gujarat, India (Hybrid) | Jun 2024 - Jun 2025 · 1 yr 1 mo</p>
+    <ul>
+      <li>Conducted <strong>business analysis</strong> and <strong>predictive forecasting</strong> to identify cost-saving opportunities, delivering measurable ROI improvements</li>
+      <li>Developed <strong>automated monitoring systems</strong> to track data quality metrics and maintain integrity of enterprise datasets</li>
+      <li>Optimized database queries and reporting workflows using <strong>SQL</strong>, reducing execution time and enhancing team productivity</li>
+      <li>Partnered with cross-functional stakeholders to gather requirements and deliver <strong>analytical solutions</strong> aligned with strategic objectives</li>
+      <li>Applied advanced <strong>stakeholder communication</strong> techniques to present data-driven insights to leadership teams</li>
+    </ul>
+    <!-- <p style="opacity: 0.7; margin-top: 1rem;"><strong>Skills:</strong> Stakeholder Communication, SQL, and 11 other skills</p> -->
+  </div>
+
+  <!-- Experience 2: Web Developer - Rushkar Technology -->
+  <div class="card" style="margin-bottom: 2rem;">
+    <h3>Web Developer</h3>
+    <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">Rushkar Technology Pvt. Ltd. - Hire Dot Net Developers · Internship</p>
+    <p style="opacity: 0.6; margin-bottom: 1rem;">Ahmedabad, Gujarat, India (On-site) | Apr 2024 - May 2024 · 2 mos</p>
+    <ul>
+      <li>Designed and developed <strong>responsive web applications</strong> using modern front-end technologies and frameworks</li>
+      <li>Collaborated with senior developers to implement <strong>user-friendly interfaces</strong> and optimize website performance</li>
+      <li>Participated in <strong>code reviews</strong> and debugging sessions to ensure code quality and best practices</li>
+      <li>Integrated <strong>RESTful APIs</strong> and third-party services to enhance application functionality</li>
+      <li>Contributed to <strong>agile development processes</strong> including daily standups and sprint planning sessions</li>
+    </ul>
+  </div>
+
+  <!-- Experience 3: Data Analyst - Seawind Solution -->
+  <div class="card" style="margin-bottom: 2rem;">
+    <h3>Data Analyst</h3>
+    <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">Seawind Solution Private Limited · Internship</p>
+    <p style="opacity: 0.6; margin-bottom: 1rem;">Ahmedabad, Gujarat, India (On-site) | Mar 2024 - Mar 2024 · 1 mo</p>
+    <ul>
+      <li>Performed <strong>data analysis</strong> and visualization using <strong>Microsoft Power BI</strong> to support business decision-making</li>
+      <li>Developed interactive <strong>dashboards and reports</strong> to track key performance indicators (KPIs) and business metrics</li>
+      <li>Utilized <strong>SQL</strong> to extract, transform, and analyze data from multiple sources for comprehensive reporting</li>
+      <li>Collaborated with team members to identify <strong>data trends and patterns</strong> that informed strategic initiatives</li>
+      <li>Cleaned and validated datasets to ensure <strong>data accuracy</strong> and reliability for analysis</li>
+    </ul>
+    <!-- <p style="opacity: 0.7; margin-top: 1rem;"><strong>Skills:</strong> Microsoft Power BI, SQL, and 9 other skills</p> -->
+  </div>
+</div>
+    
+    </div>
+</section>
+
+
+    
+   
+<!-- Skills Section -->
+<section id="skills" >
+    <div class="container">
+        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">SKILLS</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <h3>Core Analytics Tools</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Advanced Excel</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Google Sheets</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>SQL & Database Management</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">MySQL</span>
+                    <span class="tag">MS SQL Server</span>
+                    <span class="tag">T-SQL</span>
+                    <span class="tag">Query Optimization</span>
+                    <span class="tag">Joins & CTEs</span>
+                    <span class="tag">Window Functions</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Business Intelligence & Visualization</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Looker</span>
+                    <span class="tag">DAX</span>
+                    <span class="tag">Dashboard Design</span>
+                    <span class="tag">KPI Tracking</span>
+                    <span class="tag">Data Storytelling</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Excel & Spreadsheet Analysis</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Pivot Tables</span>
+                    <span class="tag">VLOOKUP/XLOOKUP</span>
+                    <span class="tag">Power Query</span>
+                    <span class="tag">Macros & VBA</span>
+                    <span class="tag">Data Modeling</span>
+                    <span class="tag">Advanced Formulas</span>
+                    <span class="tag">Conditional Formatting</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Python for Data Analysis</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Matplotlib</span>
+                    <span class="tag">Seaborn</span>
+                    <span class="tag">Data Cleaning</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Jupyter</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Statistical Analysis & Methods</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">A/B Testing</span>
+                    <span class="tag">Hypothesis Testing</span>
+                    <span class="tag">Regression Analysis</span>
+                    <span class="tag">Forecasting</span>
+                    <span class="tag">Descriptive Statistics</span>
+                    <span class="tag">Trend Analysis</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Data Management</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Data Cleaning</span>
+                    <span class="tag">Data Transformation</span>
+                    <span class="tag">Data Validation</span>
+                    <span class="tag">ETL Processes</span>
+                    <span class="tag">Data Quality</span>
+                    <span class="tag">Git/GitHub</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Business & Communication Skills</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                    <span class="tag">Requirements Gathering</span>
+                    <span class="tag">Stakeholder Communication</span>
+                    <span class="tag">Report Writing</span>
+                    <span class="tag">Problem Solving</span>
+                    <span class="tag">Critical Thinking</span>
+                    <span class="tag">Business Intelligence</span>
+                </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Achievements Section -->
+<section id="achievements" class="bg-white">
+    <div class="container">
+        <!-- <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 2rem;">ACHIEVEMENTS & CERTIFICATIONS</h2> -->
+        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">ACHIEVEMENTS & CERTIFICATIONS</h2>
+        <div class="card-grid">
+            <div class="card" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 75%, #EA4335 100%); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 36px; color: white; font-weight: bold;">G</div>
+                <h3>Google Data Analytics Professional Certificate</h3>
+                <p style="opacity: 0.7; margin: 1rem 0;">Comprehensive certification covering data cleaning, analysis, visualization, and SQL</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                    <span class="tag">Data Analysis</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">R Programming</span>
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">Data Cleaning</span>
+                    <span class="tag"> Spreadsheets</span>
+                    <span class="tag"> Visualization</span>
+                    <span class="tag"> BigQuery</span>
+                    <span class="tag"> Data Ethics</span>
+                    <span class="tag"> Statistical Analysis</span>
+                    <span class="tag"> Presentations</span>
+                    <span class="tag"> Case Studies</span>
+                </div>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/R370JDIOYX9G" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem; margin-top: 1.5rem;">VIEW CERTIFICATE</a>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #054ADA 0%, #00B4E6 100%); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; font-weight: bold;">IBM</div>
+                <h3>IBM Data Science Professional Certificate</h3>
+                <p style="opacity: 0.7; margin: 1rem 0;">Advanced certification in machine learning, Python programming, and data science methodologies</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 1rem;">
+                    <span class="tag">Python</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Data Science</span>
+                    <span class="tag">Jupyter Notebooks</span>
+                    <span class="tag">Statistical Analysis</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Data Visualization</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">API Development</span>
+                </div>
+                <a href="https://www.coursera.org/account/accomplishments/specialization/NGMMHMW7760W" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem; margin-top: 1.5rem;">VIEW CERTIFICATE</a>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Contact Section -->
+    <section id="contact">
+    <div class="container">
+        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">CONTACT</h2>
+        <p class="description" style="text-align: center; margin: 0 auto;">
+            I'm always open to discussing new opportunities, collaborations, or data projects. 
+            Feel free to reach out!
+        </p>
+
+        <div class="contact-grid">
+            <div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3>Email</h3>
+                    <p>aeshwakachhadiya129@gmail.com</p>
+                </div>
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <h3>Phone</h3>
+                    <p>+1 (940) 597-9239</p>
+                </div>
+                <div class="card">
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/aeshwakachhadiya/" target="_blank" style="color: #85193C; text-decoration: none;">linkedin.com/in/aeshwakachhadiya</a></p>
+                </div>
+            </div>
+
+            <!-- KEEP ONLY THIS FORM -->
+            <div class="card">
+                <h3 style="margin-bottom: 1.5rem;">Send a Message</h3>
+                <form action="https://formsubmit.co/aeswa0001@gmail.com" method="POST">
+                    <!-- Honeypot for spam protection -->
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <!-- Disable reCAPTCHA -->
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <!-- Custom redirect after submission (optional) -->
+                    <!-- <input type="hidden" name="_next" value="https://yourportfolio.com/thankyou.html"> -->
+
+                    <!-- Custom subject line -->
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+                    
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Send Message →
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section>
+```
+
+---
+
+
+
+ 
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active nav link
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe project items
+        document.querySelectorAll('.project-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observe cards
+        document.querySelectorAll('.card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Hide/show header on scroll - REMOVED
+        // Now header stays visible all the time
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Cursor trail effect
+        const cursorDots = [];
+        const maxDots = 10;
+
+        for (let i = 0; i < maxDots; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'cursor-dot';
+            dot.style.opacity = 1 - (i / maxDots);
+            document.body.appendChild(dot);
+            cursorDots.push(dot);
+        }
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            currentX += (mouseX - currentX) * 0.1;
+            currentY += (mouseY - currentY) * 0.1;
+
+            cursorDots.forEach((dot, index) => {
+                const nextDot = cursorDots[index + 1] || cursorDots[0];
+                const x = currentX;
+                const y = currentY;
+
+                dot.style.left = x + 'px';
+                dot.style.top = y + 'px';
+
+                if (index > 0) {
+                    const prevDot = cursorDots[index - 1];
+                    const prevX = parseFloat(prevDot.style.left);
+                    const prevY = parseFloat(prevDot.style.top);
+                    dot.style.left = prevX + (x - prevX) * 0.5 + 'px';
+                    dot.style.top = prevY + (y - prevY) * 0.5 + 'px';
+                }
+            });
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.highlight-card, h1, h2');
+            
+            parallaxElements.forEach(el => {
+                const speed = el.dataset.speed || 0.5;
+                el.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
+            });
+        });
+
+        // Button hover effect
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function(e) {
+                const x = e.pageX - this.offsetLeft;
+                const y = e.pageY - this.offsetTop;
+                
+                const ripple = document.createElement('span');
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Form submission animation
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', () => {
+                const button = form.querySelector('button[type="submit"]');
+                button.textContent = 'Sending...';
+                button.style.transform = 'scale(0.95)';
+            });
+        }
+
+        // Add stagger animation to cards on scroll
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            cardObserver.observe(card);
+        });
+
+        // Rotating text animation with word-by-word effect
+        // Rotating text animation with typing effect (letter by letter with proper word spacing)
+        const rotatingText = document.getElementById('rotating-text');
+        const texts = [
+            'tech enthusiast',
+            'passionate about impact',
+            'driven by insights',
+            'creative thinker',
+            'obsessed with optimization'
+        ];
+        let currentIndex = 0;
+        let isTyping = false;
+
+        function typeText() {
+            if (isTyping) return;
+            isTyping = true;
+            
+            // Fade out current text
+            rotatingText.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                const text = texts[currentIndex];
+                rotatingText.innerHTML = '';
+                rotatingText.style.opacity = '1';
+                
+                // Create a container for the letters
+                const letterContainer = document.createElement('span');
+                letterContainer.style.display = 'inline-block';
+                letterContainer.style.whiteSpace = 'pre'; // Preserve spaces
+                rotatingText.appendChild(letterContainer);
+                
+                // Type each letter one by one (including spaces)
+                let letterIndex = 0;
+                
+                function typeLetter() {
+                    if (letterIndex < text.length) {
+                        const char = text[letterIndex];
+                        const letter = document.createElement('span');
+                        letter.textContent = char;
+                        letter.style.display = 'inline-block';
+                        letter.style.opacity = '0';
+                        letter.style.transform = 'translateX(10px)';
+                        letter.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                        
+                        // If it's a space, make sure it takes up proper width
+                        if (char === ' ') {
+                            letter.style.width = '0.3em';
+                        }
+                        
+                        letterContainer.appendChild(letter);
+                        
+                        // Animate the letter
+                        setTimeout(() => {
+                            letter.style.opacity = '1';
+                            letter.style.transform = 'translateX(0)';
+                        }, 10);
+                        
+                        letterIndex++;
+                        setTimeout(typeLetter, 80); // 80ms delay between each letter
+                    } else {
+                        isTyping = false;
+                    }
+                }
+                
+                typeLetter();
+            }, 400);
+        }
+
+        // Initial setup - type the first text
+        const initialText = texts[0];
+        rotatingText.innerHTML = '';
+        const initialContainer = document.createElement('span');
+        initialContainer.style.display = 'inline-block';
+        initialContainer.style.whiteSpace = 'pre';
+        rotatingText.appendChild(initialContainer);
+
+        let initialIndex = 0;
+        function typeInitial() {
+            if (initialIndex < initialText.length) {
+                const char = initialText[initialIndex];
+                const letter = document.createElement('span');
+                letter.textContent = char;
+                letter.style.display = 'inline-block';
+                letter.style.opacity = '0';
+                letter.style.transform = 'translateX(10px)';
+                letter.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                
+                if (char === ' ') {
+                    letter.style.width = '0.3em';
+                }
+                
+                initialContainer.appendChild(letter);
+                
+                setTimeout(() => {
+                    letter.style.opacity = '1';
+                    letter.style.transform = 'translateX(0)';
+                }, 10);
+                
+                initialIndex++;
+                setTimeout(typeInitial, 80);
+            }
+        }
+        
+        typeInitial();
+
+        // Rotate text every 4 seconds
+        setInterval(typeText, 4000);
+
+
+        // Skill pill hover effect
+        document.querySelectorAll('[style*="rgba(255, 255, 255, 0.5)"]').forEach(pill => {
+            if (pill.textContent.trim() === 'SQL' || 
+                pill.textContent.trim() === 'Python' || 
+                pill.textContent.trim() === 'Power BI/ Tableau' ||
+                pill.textContent.trim() === 'Statistics' ||
+                pill.textContent.trim() === 'Machine Learning' ||
+                pill.textContent.trim() === 'Data Visualization' ||
+                pill.textContent.trim() === 'Excel' ||
+                pill.textContent.trim() === 'Data Storytelling') {
+                
+                const originalStyle = pill.getAttribute('style');
+                
+                pill.addEventListener('mouseenter', function() {
+                    this.style.background = 'rgba(133, 25, 60, 0.08)';
+                    this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
+                    this.style.boxShadow = '0 8px 20px rgba(133, 25, 60, 0.2)';
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.cursor = 'pointer';
+                });
+                
+                pill.addEventListener('mouseleave', function() {
+                    this.setAttribute('style', originalStyle);
+                    this.style.transition = 'all 0.3s ease';
+                });
+            }
+        });
+
+        // About section cards hover effect
+        document.querySelectorAll('#about .card').forEach(card => {
+            const originalBg = card.style.background || 'white';
+            
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(133, 25, 60, 0.05)';
+                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
+                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = originalBg;
+                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
+                this.style.boxShadow = '';
+                this.style.transform = '';
+            });
+        });
+
+        // Skills section cards hover effect
+        document.querySelectorAll('#skills .card').forEach(card => {
+            const originalBg = card.style.background || 'white';
+            
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(133, 25, 60, 0.05)';
+                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
+                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = originalBg;
+                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
+                this.style.boxShadow = '';
+                this.style.transform = '';
+            });
+        });
+
+        // Contact section cards hover effect
+        document.querySelectorAll('#contact .card').forEach(card => {
+            const originalBg = card.style.background || 'white';
+            
+            card.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(133, 25, 60, 0.05)';
+                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
+                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.background = originalBg;
+                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
+                this.style.boxShadow = '';
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
