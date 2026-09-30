@@ -934,96 +934,43 @@
         <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 3rem;">PROJECTS</h2>
         
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+
+                    <!-- FEATURED: Research Project -->
+        <div class="card" style="margin-bottom: 2rem; border-color: rgba(133, 25, 60, 0.4); position: relative;">
+            <span class="tag" style="position: absolute; top: 1.5rem; right: 1.5rem; background: #85193C; color: white; border-color: #85193C;">🔬 Research Project</span>
+            <h3 style="font-size: 26px; margin-bottom: 0.25rem; padding-right: 10rem;">Polar Knowledge Explorer (PolarKD)</h3>
+            <p style="opacity: 0.6; margin-bottom: 1rem; font-size: 14px;">Research Assistant · D3 Lab, University of North Texas</p>
+
+            <p style="font-size: 15px; margin-bottom: 1rem; opacity: 0.85;">
+                An <strong>LLM-based causality toolkit for polar science</strong> that extracts keywords, datasets, and causal relationships from scientific papers, then builds an interactive <strong>Knowledge Graph</strong> and a <strong>RAG-based Q&A system</strong>. It combines <strong>GPT-4o-mini dataset extraction</strong> with <strong>local LLM relation extraction</strong> (Mistral, Qwen, Llama 3, Gemma), stored in <strong>Neo4j</strong>.
+            </p>
+
+            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">My Contributions</h4>
+            <ul style="font-size: 14px; margin-bottom: 1.5rem; opacity: 0.85;">
+                <li><strong>Model testing & optimization:</strong> benchmarked the toolkit's extraction accuracy, found the baseline underperforming, and integrated and evaluated additional <strong>LLMs</strong> to identify the best-performing configuration</li>
+                <li>Developed and packaged <strong>modular Python components</strong>, structured for distribution as installable <strong>PyPI packages</strong></li>
+                <li>Built and <strong>deployed the toolkit's UI</strong> on UNT's domain, with documentation so external researchers can reproduce and use it</li>
+                <li>Maintained the <strong>version-controlled GitHub codebase</strong> with documented, reproducible scripts, and contributed to the research manuscript</li>
+            </ul>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <span class="tag">LLMs</span>
+                <span class="tag">RAG</span>
+                <span class="tag">Knowledge Graphs</span>
+                <span class="tag">Neo4j</span>
+                <span class="tag">OpenAI API</span>
+                <span class="tag">Ollama</span>
+                <span class="tag">NLP</span>
+                <span class="tag">SentenceTransformers</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">Python Packaging (PyPI)</span>
+            </div>
+
+            <a href="https://github.com/d3lab-unt/polarKD" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+        </div>
             
-           
 
-            <!-- Project 2: Vendor Performance -->
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-                    <img src="images/vendor_photo.png" alt="Vendor Performance" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Vendor Analytics & Profit Optimization Platform </h3>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Automated procurement analytics platform using <strong>ML-based vendor scoring</strong> and <strong>statistical testing</strong>, achieving <strong>95% reduction</strong> in <strong>manual reporting</strong> and <strong>5-15% profit improvement.</strong></p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="tag">SQL/SQLAlchemy</span>
-                        <span class="tag">ETL Pipelines</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Statistical Analysis</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Statistical Testing</span>
-                        <span class="tag">Data Automation</span>
-                        <span class="tag">Excel/Power BI</span>
-                        <span class="tag">Dashboard Development</span>
-                        <span class="tag">Streamlit</span>
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project: Customer Segmentation Analysis -->
-<div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-     onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-     onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-    <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-        <img src="images/customer_segment_analysis.png" alt="Customer Segmentation Analysis" style="width: 100%; height: 100%; object-fit: cover;">
-    </div>
-    <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-        <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Customer Segmentation & Marketing Analytics Platform</h3>
-        <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Data-driven customer segmentation solution using <strong>RFM analysis</strong> and <strong>K-Means clustering</strong>, delivering <strong>15-25% increase</strong> in <strong>marketing ROI</strong> and <strong>30-40% improvement</strong> in <strong>customer retention</strong> through targeted strategies.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">K-Means Clustering</span>
-            <span class="tag">RFM Analysis</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Customer Analytics</span>
-            <span class="tag">Business Intelligence</span>
-            <span class="tag">Marketing Strategy</span>
-        </div>
-        <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-            <a href="https://github.com/Aeshwa-Kachhadiya/Customer-segmentation-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-        </div>
-    </div>
-</div>
-
- <!-- Project 1: Energy Consumption -->
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-                    <img src="images/energy_consumption_image.png" alt="Energy Consumption" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Energy Consumption Analysis </h3>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas/NumPy</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">LightGBM/XGBoost</span>
-                        <span class="tag">Time Series Forecasting</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Feature Engineering</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">Model Deployment</span>
-                        <span class="tag">Predictive Modeling</span>
-                        <span class="tag">Business Intelligence</span>
-
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Project 3: Skin Disease Analysis -->
+                    <!-- Project 3: Skin Disease Analysis -->
             <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
                  onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
                  onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
@@ -1054,31 +1001,78 @@
                 </div>
             </div>
 
+
+             <!-- Project 1: Energy Consumption -->
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+                    <img src="images/energy_consumption_image.png" alt="Energy Consumption" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Energy Consumption Analysis </h3>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas/NumPy</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">LightGBM/XGBoost</span>
+                        <span class="tag">Time Series Forecasting</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Feature Engineering</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Model Deployment</span>
+                        <span class="tag">Predictive Modeling</span>
+                        <span class="tag">Business Intelligence</span>
+
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- Project 2: Vendor Performance -->
+            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
+                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
+                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
+                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
+                    <img src="images/vendor_photo.png" alt="Vendor Performance" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
+                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">AI-Powered Vendor Analytics Platform </h3>
+                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">End-to-end data pipeline that <strong>ingests raw Excel files</strong>, validates and loads them into a <strong>SQL database</strong>, then runs <strong>ML analytics</strong> (Random Forest demand forecasting, Isolation Forest anomaly detection, vendor scoring) with <strong>prioritized email alerts</strong> and live Streamlit dashboards. Cut manual reporting effort by <strong>~95%</strong>.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                        <span class="tag">Python</span>
+                        <span class="tag">ETL Pipelines</span>
+                        <span class="tag">SQLAlchemy</span>
+                        <span class="tag">SQLite</span>
+                        <span class="tag">Workflow Automation</span>
+                        <span class="tag">Data Validation</span>
+                        <span class="tag">Random Forest</span>
+                        <span class="tag">Anomaly Detection</span>
+                        <span class="tag">Alerting</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Plotly</span>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project: Customer Segmentation Analysis -->
+
+
+
+
+
             <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
      onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
      onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-    <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-        <img src="images/health_data_analysis.png" alt="Healthcare Data Analytics" style="width: 100%; height: 100%; object-fit: cover;">
-    </div>
-    <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-        <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Healthcare Data Analytics</h3>
-        <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Analyzed patient health data to identify <strong>35% higher hospital costs</strong> linked to obesity and delivered <strong>evidence-based recommendations</strong> for preventive care programs and <strong>resource optimization</strong> across hospital tiers.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-            <span class="tag">Excel</span>
-            <span class="tag">Statistical Analysis</span>
-            <span class="tag">Data Cleaning</span>
-            <span class="tag">Pivot Tables</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Feature Engineering</span>
-            <span class="tag">Healthcare Analytics</span>
-            <span class="tag">Correlation Analysis</span>
-            <span class="tag">Patient Segmentation</span>
-            <span class="tag">Dashboard Design</span>
-            <span class="tag">Business Intelligence</span>
-        </div>
-        <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-            <a href="https://github.com/Aeshwa-Kachhadiya/Healthcare_Data_Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-        </div>
+   
     </div>
             </div>
 
