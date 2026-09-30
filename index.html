@@ -930,12 +930,37 @@
 
 <!-- Projects Section -->
 <section id="projects">
+    <style>
+        .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .proj-card {
+            background: white;
+            border: 1px solid rgba(35, 35, 35, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+        }
+        .proj-card:hover {
+            border-color: rgba(133, 25, 60, 0.5);
+            box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
+            transform: translateY(-10px);
+        }
+        .proj-img { width: 100%; height: 200px; overflow: hidden; background: #f5f5f5; }
+        .proj-img img { width: 100%; height: 100%; object-fit: cover; }
+        .proj-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .proj-body h3 { font-size: 18px; margin-bottom: 0.75rem; }
+        .proj-body p { font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85; }
+        .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .proj-btns { display: flex; gap: 0.5rem; margin-top: auto; }
+        @media (max-width: 1024px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px)  { .proj-grid { grid-template-columns: 1fr; } }
+    </style>
+
     <div class="container">
         <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 3rem;">PROJECTS</h2>
-        
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
 
-                    <!-- FEATURED: Research Project -->
+        <!-- FEATURED: PolarKD (full width) -->
         <div class="card" style="margin-bottom: 2rem; border-color: rgba(133, 25, 60, 0.4); position: relative;">
             <span class="tag" style="position: absolute; top: 1.5rem; right: 1.5rem; background: #85193C; color: white; border-color: #85193C;">🔬 Research Project</span>
             <h3 style="font-size: 26px; margin-bottom: 0.25rem; padding-right: 10rem;">Polar Knowledge Explorer (PolarKD)</h3>
@@ -953,98 +978,60 @@
                 <li>Maintained the <strong>version-controlled GitHub codebase</strong> with documented, reproducible scripts, and contributed to the research manuscript</li>
             </ul>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <div class="proj-tags" style="margin-bottom: 1.5rem;">
                 <span class="tag">LLMs</span>
+                <span class="tag">Model Evaluation</span>
                 <span class="tag">RAG</span>
                 <span class="tag">Knowledge Graphs</span>
                 <span class="tag">Neo4j</span>
                 <span class="tag">OpenAI API</span>
                 <span class="tag">Ollama</span>
                 <span class="tag">NLP</span>
-                <span class="tag">SentenceTransformers</span>
-                <span class="tag">Streamlit</span>
                 <span class="tag">Python Packaging (PyPI)</span>
+                <span class="tag">Streamlit</span>
             </div>
 
             <a href="https://github.com/d3lab-unt/polarKD" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
         </div>
-            
 
-                    <!-- Project 3: Skin Disease Analysis -->
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-                    <img src="images/multimodal_skin_disease_analysis.png" alt="Skin Disease Analysis" style="width: 100%; height: 100%; object-fit: cover;">
+        <!-- GRID: 3 projects -->
+        <div class="proj-grid">
+
+            <!-- 1. Multimodal Skin Disease -->
+            <div class="proj-card">
+                <div class="proj-img">
+                    <img src="images/multimodal_skin_disease_analysis.png" alt="Skin Disease Analysis">
                 </div>
-                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Multimodal Skin Disease Analysis</h3>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Built multimodal AI system combining <strong>CNN, NLP,</strong> and <strong>audio analysis</strong> to classify 7 skin diseases with <strong>85.7% accuracy</strong> and <strong>real-time diagnosis under 5 seconds.</strong></p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                <div class="proj-body">
+                    <h3>Multimodal Skin Disease Analysis</h3>
+                    <p>Built multimodal AI system combining <strong>CNN, NLP,</strong> and <strong>audio analysis</strong> to classify 7 skin diseases with <strong>85.7% accuracy</strong> and <strong>real-time diagnosis under 5 seconds.</strong></p>
+                    <div class="proj-tags">
                         <span class="tag">Python</span>
                         <span class="tag">PyTorch</span>
                         <span class="tag">Computer Vision</span>
                         <span class="tag">NLP (DistilBERT)</span>
-                        <span class="tag">Power BI</span>
                         <span class="tag">Multimodal AI</span>
                         <span class="tag">TensorFlow</span>
-                        <span class="tag">Streamlit</span>
                         <span class="tag">Transformers</span>
-                        <span class="tag">API Integration</span>
-                        <span class="tag">Data Visualization</span>
                         <span class="tag">Deep Learning</span>
-
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">API Integration</span>
                     </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                    <div class="proj-btns">
                         <a href="https://github.com/Aeshwa-Kachhadiya/Multimodel-skin-disease-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
                     </div>
                 </div>
             </div>
 
-
-             <!-- Project 1: Energy Consumption -->
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-                    <img src="images/energy_consumption_image.png" alt="Energy Consumption" style="width: 100%; height: 100%; object-fit: cover;">
+            <!-- 2. Vendor Pipeline -->
+            <div class="proj-card">
+                <div class="proj-img">
+                    <img src="images/vendor_photo.png" alt="Vendor Analytics Pipeline">
                 </div>
-                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">Energy Consumption Analysis </h3>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas/NumPy</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">LightGBM/XGBoost</span>
-                        <span class="tag">Time Series Forecasting</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Feature Engineering</span>
-                        <span class="tag">Data Visualization</span>
-                        <span class="tag">Model Deployment</span>
-                        <span class="tag">Predictive Modeling</span>
-                        <span class="tag">Business Intelligence</span>
-
-                    </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
-                    </div>
-                </div>
-            </div>
-            
-
-            <!-- Project 2: Vendor Performance -->
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-                 onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-                 onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-                <div style="width: 100%; height: 200px; overflow: hidden; background: #f5f5f5;">
-                    <img src="images/vendor_photo.png" alt="Vendor Performance" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-                <div style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 style="font-size: 18px; margin-bottom: 0.75rem;">AI-Powered Vendor Analytics Platform </h3>
-                    <p style="font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85;">End-to-end data pipeline that <strong>ingests raw Excel files</strong>, validates and loads them into a <strong>SQL database</strong>, then runs <strong>ML analytics</strong> (Random Forest demand forecasting, Isolation Forest anomaly detection, vendor scoring) with <strong>prioritized email alerts</strong> and live Streamlit dashboards. Cut manual reporting effort by <strong>~95%</strong>.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                <div class="proj-body">
+                    <h3>AI-Powered Vendor Analytics Platform</h3>
+                    <p>End-to-end data pipeline that <strong>ingests raw Excel files</strong>, validates and loads them into a <strong>SQL database</strong>, then runs <strong>ML analytics</strong> (Random Forest demand forecasting, Isolation Forest anomaly detection, vendor scoring) with <strong>prioritized email alerts</strong> and live Streamlit dashboards. Cut manual reporting effort by <strong>~95%</strong>.</p>
+                    <div class="proj-tags">
                         <span class="tag">Python</span>
                         <span class="tag">ETL Pipelines</span>
                         <span class="tag">SQLAlchemy</span>
@@ -1057,25 +1044,41 @@
                         <span class="tag">Streamlit</span>
                         <span class="tag">Plotly</span>
                     </div>
-                    <div style="display: flex; gap: 0.5rem; margin-top: auto;">
+                    <div class="proj-btns">
                         <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project: Customer Segmentation Analysis -->
-
-
-
-
-
-            <div style="background: white; border: 1px solid rgba(35, 35, 35, 0.1); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s ease;"
-     onmouseenter="this.style.borderColor='rgba(133, 25, 60, 0.5)'; this.style.boxShadow='0 20px 50px rgba(133, 25, 60, 0.3)'; this.style.transform='translateY(-10px)';" 
-     onmouseleave="this.style.borderColor='rgba(35, 35, 35, 0.1)'; this.style.boxShadow=''; this.style.transform='translateY(0)';">
-   
-    </div>
+            <!-- 3. Energy Consumption -->
+            <div class="proj-card">
+                <div class="proj-img">
+                    <img src="images/energy_consumption_image.png" alt="Energy Consumption">
+                </div>
+                <div class="proj-body">
+                    <h3>Energy Consumption Analysis</h3>
+                    <p>Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
+                    <div class="proj-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas/NumPy</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">LightGBM/XGBoost</span>
+                        <span class="tag">Time Series Forecasting</span>
+                        <span class="tag">Feature Engineering</span>
+                        <span class="tag">Model Deployment</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <div class="proj-btns">
+                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
+                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
+                    </div>
+                </div>
             </div>
 
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://github.com/Aeshwa-Kachhadiya?tab=repositories" target="_blank" class="btn btn-secondary">View All Projects on GitHub →</a>
         </div>
     </div>
 </section>
