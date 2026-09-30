@@ -1734,31 +1734,22 @@
 
 
         // Skill pill hover effect
+        // Skill pill hover effect (works for ALL hero pills)
         document.querySelectorAll('[style*="rgba(255, 255, 255, 0.5)"]').forEach(pill => {
-            if (pill.textContent.trim() === 'SQL' || 
-                pill.textContent.trim() === 'Python' || 
-                pill.textContent.trim() === 'Power BI/ Tableau' ||
-                pill.textContent.trim() === 'Statistics' ||
-                pill.textContent.trim() === 'Machine Learning' ||
-                pill.textContent.trim() === 'Data Visualization' ||
-                pill.textContent.trim() === 'Excel' ||
-                pill.textContent.trim() === 'Data Storytelling') {
-                
-                const originalStyle = pill.getAttribute('style');
-                
-                pill.addEventListener('mouseenter', function() {
-                    this.style.background = 'rgba(133, 25, 60, 0.08)';
-                    this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
-                    this.style.boxShadow = '0 8px 20px rgba(133, 25, 60, 0.2)';
-                    this.style.transform = 'translateY(-3px)';
-                    this.style.cursor = 'pointer';
-                });
-                
-                pill.addEventListener('mouseleave', function() {
-                    this.setAttribute('style', originalStyle);
-                    this.style.transition = 'all 0.3s ease';
-                });
-            }
+            const originalStyle = pill.getAttribute('style');
+
+            pill.addEventListener('mouseenter', function() {
+                this.style.background = 'rgba(133, 25, 60, 0.08)';
+                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
+                this.style.boxShadow = '0 8px 20px rgba(133, 25, 60, 0.2)';
+                this.style.transform = 'translateY(-3px)';
+                this.style.cursor = 'pointer';
+            });
+
+            pill.addEventListener('mouseleave', function() {
+                this.setAttribute('style', originalStyle);
+                this.style.transition = 'all 0.3s ease';
+            });
         });
 
         // About section cards hover effect
