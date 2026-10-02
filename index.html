@@ -1,1758 +1,1113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aeshwa Kachhadiya - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #FAF8F1;
-            color: #232323;
-            line-height: 1.5;
-            font-size: 16px;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(35, 35, 35, 0.1);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            padding: 1rem 2rem;
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 36px;
-            font-weight: bold;
-            color: #232323;
-            font-family: 'Bell MT', 'Georgia', serif;
-        }
-
-        nav {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        nav a {
-            font-size: 14px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            color: #232323;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 80%;
-            height: 2px;
-            background: #232323;
-            transition: transform 0.3s ease;
-        }
-
-        nav a:hover {
-            opacity: 1;
-        }
-
-        nav a:hover::after, nav a.active::after {
-            transform: translateX(-50%) scaleX(1);
-        }
-
-        nav a.active {
-            opacity: 1;
-            font-weight: 600;
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 11rem 2rem 4rem;
-        }
-
-        #about {
-        padding-top: 3.5rem;
-        }
-
-        #contact {
-        padding-top: 3.5rem;
-        }
-
-        #skills {
-        padding-top: 3.5rem;
-        }
-
-        #projects { 
-        padding-top: 3.5rem;
-        }
-
-        #experience {
-        padding-top: 3.5rem;
-        }
-        
-        #achievements {
-        padding-top: 3.5rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-family: monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: clamp(48px, 10vw, 120px);
-            font-weight: bold;
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.2;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, #85193C 0%, #555 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        h2 {
-            font-size: clamp(32px, 8vw, 80px);
-            font-weight: bold;
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.3;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            animation: fadeInUp 0.8s ease both;
-        }
-
-        h3 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-weight: bold;
-            font-size: 20px;
-            line-height: 1.4;
-        }
-
-        h4 {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-weight: bold;
-            font-size: 18px;
-            line-height: 1.4;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .animate-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
-        .stagger-6 { animation-delay: 0.6s; }
-
-        .tagline {
-            font-size: clamp(24px, 4vw, 36px);
-            font-weight: normal;
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.4;
-            margin-bottom: 2rem;
-            max-width: 900px;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .description {
-            font-size: 16px;
-            line-height: 1.5;
-            opacity: 0.85;
-            margin-bottom: 3rem;
-            max-width: 800px;
-            animation: fadeInUp 1s ease 0.6s both;
-            text-align: left;
-        }
-
-        .section-label {
-            font-size: 12px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            animation: fadeIn 1s ease;
-            font-weight: 600;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 2rem;
-            font-size: 12px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            border: 1px solid #232323;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            font-weight: 600;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(35, 35, 35, 0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-    background: #85193C;
-    color: white;
-    transition: all 0.3s ease;
-        }
-
-        .btn-primary::before {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-primary:hover {
-    background: white;
-    color: #85193C;
-    border-color: #85193C;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(133, 25, 60, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #232323;
-            border-color: #232323;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(133, 25, 60, 0.05);
-            border-color: #85193C;
-            color: #85193C;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(133, 25, 60, 0.3);
-        }
-
-        /* Cards */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid rgba(35, 35, 35, 0.1);
-            border-radius: 16px; 
-            padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(35, 35, 35, 0.03), transparent);
-            transition: left 0.5s;
-        }
-
-        .card:hover::before {
-            left: 100%;
-        }
-
-        .card:hover {
-            background: rgba(133, 25, 60, 0.05);
-            border-color: rgba(133, 25, 60, 0.5);
-            box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
-            transform: translateY(-10px);
-        }
-
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 1rem;
-            transition: color 0.3s;
-            line-height: 1.4;
-        }
-
-        .card:hover h3 {
-            color: #555;
-        }
-
-        .card p {
-            opacity: 0.85;
-            line-height: 1.5;
-            transition: opacity 0.3s;
-            font-size: 14px;
-        }
-
-        .card:hover p {
-            opacity: 1;
-        }
-
-        .card ul {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* Highlights */
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .highlight-card {
-            background: white;
-            border: 1px solid rgba(35, 35, 35, 0.1);
-            padding: 2rem;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(35, 35, 35, 0.02) 0%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: rgba(35, 35, 35, 0.3);
-        }
-
-        .highlight-card:hover::after {
-            opacity: 1;
-        }
-
-        .highlight-label {
-            font-size: 10px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .highlight-card:hover .highlight-label {
-            opacity: 1;
-            transform: translateX(5px);
-        }
-
-        .highlight-value {
-            font-size: 24px;
-            font-weight: bold;
-            font-family: Georgia, 'Times New Roman', serif;
-            transition: all 0.3s;
-            line-height: 1.3;
-        }
-
-        .highlight-card:hover .highlight-value {
-            transform: scale(1.05);
-            color: #555;
-        }
-
-        /* White Section */
-        .bg-white {
-            background: white;
-        }
-
-        /* Project Item */
-        .project-item {
-            background: white;
-            border: 1px solid rgba(35, 35, 35, 0.1);
-            margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;  /* <-- Changed: Makes it vertical */
-            gap: 0;
-            transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateY(30px);
-            max-width: 100%;
-        }
-
-        .project-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-item:hover {
-            border-color: rgba(35, 35, 35, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
-            width: 100%;  /* <-- Add this */
-            height: 300px;
-            min-height: 300px;
-            max-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
-        }
-
-        .project-content {
-            padding: 3rem;
-        }
-
-        .project-content h3 {
-            font-size: 24px;
-            line-height: 1.3;
-        }
-
-        .project-content p {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .project-content h4 {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .project-content ul li {
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            font-size: 13px;
-            font-family: 'Georgia', 'Times New Roman', serif;
-            text-transform: none;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(35, 35, 35, 0.2);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            font-weight: 500;
-        }
-
-        .tag:hover {
-            background: #85193C;
-            color: white;
-            border-color: #85193C;
-            transform: translateY(-2px);
-        }
-
-        /* Parallax Effect */
-        .parallax-section {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        /* Cursor Trail */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: #232323;
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.5;
-            transition: opacity 0.3s;
-        }
-
-        /* Page Transition */
-        .page-transition {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #232323;
-            z-index: 10000;
-            transform: translateY(-100%);
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
-        }
-
-        .page-transition.active {
-            transform: translateY(0);
-        }
-
-        /* Contact Form */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            font-size: 0.75rem;
-            font-family: monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid rgba(35, 35, 35, 0.2);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        label {
-            display: block;
-            font-size: 12px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            .project-item, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 6rem 1.5rem 3rem;
-            }
-        }
-
-        .skill-pill {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(35, 35, 35, 0.2);
-            border-radius: 25px;
-            padding: 0.5rem 1.5rem;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .skill-pill:hover {
-            /* NEW Projects Grid Styles - Add these */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-/* Projects Grid Styles */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.project-card {
-    background: white;
-    border: 1px solid rgba(35, 35, 35, 0.1);
-    transition: all 0.4s ease;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.project-card:hover {
-    border-color: rgba(133, 25, 60, 0.5);
-    box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
-    transform: translateY(-10px);
-}
-
-.project-card .project-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #f5f5f5;
-}
-
-.project-card .project-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card .project-content h3 {
-    font-size: 18px;
-    margin-bottom: 0.75rem;
-}
-
-.project-card .project-content p {
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-}
-
-@media (max-width: 1024px) {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aeshwa Kachhadiya | Data Portfolio</title>
+  <style>
+    :root {
+      --bg: #faf8f1;
+      --surface: #ffffff;
+      --text: #232323;
+      --muted: #5f5f5f;
+      --border: rgba(35, 35, 35, 0.12);
+      --primary: #85193c;
+      --primary-soft: rgba(133, 25, 60, 0.08);
+      --shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    nav a {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--muted);
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      transition: all 0.25s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    section {
+      padding: 5.5rem 0;
+    }
+
+    .section-heading {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 0 5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(133, 25, 60, 0.12);
+      border: 1px solid rgba(133, 25, 60, 0.2);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero-description {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(133, 25, 60, 0.22);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-soft);
+      transform: translateY(-2px);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .pill {
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card,
+    .project-card,
+    .experience-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      padding: 2rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .card h3,
+    .project-card h3,
+    .experience-card h3,
+    .contact-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .card p,
+    .project-card p,
+    .experience-card p,
+    .contact-card p,
+    li {
+      color: var(--muted);
+    }
+
+    .list-clean {
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .list-clean li strong {
+      color: var(--primary);
+    }
+
+    .education-block {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .education-item h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+
+    .muted-small {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .experience-list,
+    .projects-grid,
+    .skills-grid,
+    .learning-grid,
+    .cert-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .experience-list {
+      grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+      padding: 2rem;
+      position: relative;
+    }
+
+    .status-badge {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(133, 25, 60, 0.2);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .role-meta {
+      margin-bottom: 1rem;
+    }
+
+    .role-company {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .role-date {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .experience-card ul {
+      padding-left: 1.15rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .featured-project {
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(133, 25, 60, 0.24);
+    }
+
+    .featured-tag {
+      display: inline-block;
+      margin-bottom: 1rem;
+      background: var(--primary);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
     .projects-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .project-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-image {
+      height: 200px;
+      background: #f2f2f2;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      flex-grow: 1;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      padding: 0.38rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: auto;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .skills-card {
+      padding: 1.5rem;
+    }
+
+    .skills-card h3 {
+      margin-bottom: 1rem;
+    }
+
+    .learning-grid,
+    .cert-grid,
+    .contact-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .contact-grid.secondary {
+      grid-template-columns: 1fr 1.4fr;
+      align-items: start;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+      height: 100%;
+    }
+
+    form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font: inherit;
+      color: var(--text);
+      background: white;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+      padding: 0 0 2rem;
+    }
+
+    .section-alt {
+      background: rgba(255, 255, 255, 0.55);
+      border-top: 1px solid rgba(35, 35, 35, 0.04);
+      border-bottom: 1px solid rgba(35, 35, 35, 0.04);
+    }
+
+    @media (max-width: 1100px) {
+      .projects-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
+      }
 
-@media (max-width: 768px) {
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Responsive for projects only */
-@media (max-width: 1024px) {
-    .projects-grid {
+      .skills-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
+      }
 
-@media (max-width: 768px) {
-    .projects-grid {
+      .learning-grid,
+      .cert-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 820px) {
+      nav {
+        display: none;
+      }
+
+      .two-col,
+      .projects-grid,
+      .skills-grid,
+      .learning-grid,
+      .cert-grid,
+      .contact-grid,
+      .contact-grid.secondary {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 6rem;
+      }
+
+      .experience-card,
+      .card,
+      .featured-project {
+        padding: 1.5rem;
+      }
+
+      .status-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 1rem;
+      }
     }
-}
-            background: rgba(133, 25, 60, 0.08);
-            border-color: rgba(133, 25, 60, 0.5);
-            box-shadow: 0 8px 20px rgba(133, 25, 60, 0.2);
-            transform: translateY(-3px);
-        }
-
-        
-
-    </style>
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <!-- <img src="Photu.png" alt="Aeshwa" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;"> -->
-                <!-- <div class="logo">Aeshwa</div> -->
-            </div>
-            <nav>
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#achievements">Achievements</a>
-                <a href="#contact">Contact</a>
-                
-            </nav>
-        </div>
-    </header>
-  <!-- Home Section -->
-    <section id="home">
-        <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-
-                <div style="background: rgba(139, 0, 70, 0.15); border: 1px solid rgba(139, 0, 70, 0.3); border-radius: 50px; padding: 0.5rem 2rem; margin-bottom: 1rem; font-size: 14px; font-weight: 500; color: #85193C;">                Hello World! I'm
-            </div>
-            <h1 style="font-size: clamp(36px, 6vw, 64px); margin-bottom: 1.5rem;">AESHWA KACHHADIYA</h1>
-            <div style="font-size: 20px; margin-bottom: 2rem; min-height: 30px;">
-                I'm  <span id="rotating-text" style="font-weight: 600; color: #85193C;">tech enthusiast</span>
-            </div>
-            <p class="description animate-in stagger-4" style="text-align: center; margin: 0 auto;">
-                               Transforming <span style="color: #85193C; font-weight: 600;">raw data</span> into <span style="color: #85193C; font-weight: 600;">intelligent</span>, <span style="color: #85193C; font-weight: 600;">scalable solutions</span> that drive smarter decisions and <span style="color: #85193C; font-weight: 600;">meaningful innovation</span>. ✨
-            </p>
-            <div style="display: flex; gap: 1rem; margin-bottom: 3rem; margin-top: 2rem;" class="animate-in stagger-5">
-                              <a href="#contact" class="btn btn-secondary">✉ Get In Touch</a>
-            </div>
-
-                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; max-width: 800px; margin: 0 auto;">
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    SQL
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    Python
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    Data Visualization
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    Machine Learning
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    LLMs & RAG
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    ETL Pipelines
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    Model Deployment
-                </div>
-                <div style="background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(35, 35, 35, 0.2); border-radius: 25px; padding: 0.5rem 1.5rem; font-size: 14px; font-weight: 500;">
-                    Packaging and Git
-                </div>
-
-            </div>
-            </div>
-        </div>
-
-        </div>
-    </section>
-
-    <!-- About Section -->
-    
-    <section id="about" class="bg-white">
-        <div class="container">
-            <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">ABOUT ME</h2>
-            
-            <div class="card" style="margin-bottom: 2rem;">
-                <h3>My Background</h3>
-                <p>
-AI is fast, but it isn't always right, and that's where I come in. I'm a <strong>Master's in Data Science</strong> student at the <strong>University of North Texas</strong> who builds <strong>automation</strong>, <strong>data pipelines</strong>, and <strong>AI accuracy dashboards</strong> that replace manual work. My <strong>ETL pipeline approach</strong> at <strong>Outamation</strong> is now being <strong>rolled out company-wide</strong>, and as a <strong>Research Assistant</strong> at the <strong>D3 Lab</strong>, I work with <strong>LLMs, RAG, and knowledge graphs</strong>.</p>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Education</h3>
-                    <p><strong>Master of Science in Data Science</strong></p>
-                    <p>University of North Texas</p>
-                    <p>Denton, TX | Aug 2025 - May 2027</p>
-                    <br>
-                    <p><strong>Bachelor of Engineering in Computer Engineering</strong></p>
-                    <p>LDRP Institute of Technology and Research</p>
-                    <p>Gandhinagar, India | Oct 2021 - July 2025</p>
-                </div>
-                <div class="card">
-    <h3>What Sets Me Apart</h3>
-<ul style="list-style: none; padding-left: 0; margin-top: 1rem;">
-    <li style="margin-bottom: 0.5rem; display: block;">🔄 <strong style="color: #85193C; display: inline;">End-to-End Thinking</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Raw data to deployed model</span></li>
-    <li style="margin-bottom: 0.5rem; display: block;">⚡ <strong style="color: #85193C; display: inline;">Optimization Mindset</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Tune until it's the best</span></li>
-    <li style="margin-bottom: 0.5rem; display: block;">🔍 <strong style="color: #85193C; display: inline;">Curious About the Why</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Always ask why it works</span></li>
-    <li style="margin-bottom: 0.5rem; display: block;">🧭 <strong style="color: #85193C; display: inline;">Learns by Building</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Every skill becomes a project</span></li>
-    <li style="margin-bottom: 0.5rem; display: block;">📦 <strong style="color: #85193C; display: inline;">Reproducible Engineering</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Clean code others can reuse</span></li>
-    <li style="display: block;">📅 <strong style="color: #85193C; display: inline;">Consistency</strong> <span style="opacity: 0.7; font-size: 14px; display: inline;">— Daily practice, shared publicly</span></li>
-</ul>
-
-</div>
-            </div>
-        </div>
-    </section>
-
-<!-- Projects Section -->
-<section id="projects">
-    <style>
-        .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .proj-card {
-            background: white;
-            border: 1px solid rgba(35, 35, 35, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.4s ease;
-        }
-        .proj-card:hover {
-            border-color: rgba(133, 25, 60, 0.5);
-            box-shadow: 0 20px 50px rgba(133, 25, 60, 0.3);
-            transform: translateY(-10px);
-        }
-        .proj-img { width: 100%; height: 200px; overflow: hidden; background: #f5f5f5; }
-        .proj-img img { width: 100%; height: 100%; object-fit: cover; }
-        .proj-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .proj-body h3 { font-size: 18px; margin-bottom: 0.75rem; }
-        .proj-body p { font-size: 13px; line-height: 1.5; margin-bottom: 1rem; opacity: 0.85; }
-        .proj-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-        .proj-btns { display: flex; gap: 0.5rem; margin-top: auto; }
-        @media (max-width: 1024px) { .proj-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px)  { .proj-grid { grid-template-columns: 1fr; } }
-    </style>
-
-    <div class="container">
-        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 3rem;">PROJECTS</h2>
-
-        <!-- FEATURED: PolarKD (full width) -->
-        <div class="card" style="margin-bottom: 2rem; border-color: rgba(133, 25, 60, 0.4); position: relative;">
-            <span class="tag" style="position: absolute; top: 1.5rem; right: 1.5rem; background: #85193C; color: white; border-color: #85193C;">🔬 Research Project</span>
-            <h3 style="font-size: 26px; margin-bottom: 0.25rem; padding-right: 10rem;">Polar Knowledge Explorer (PolarKD)</h3>
-            <p style="opacity: 0.6; margin-bottom: 1rem; font-size: 14px;">Research Assistant · D3 Lab, University of North Texas</p>
-
-            <p style="font-size: 15px; margin-bottom: 1rem; opacity: 0.85;">
-                An <strong>LLM-based causality toolkit for polar science</strong> that extracts keywords, datasets, and causal relationships from scientific papers, then builds an interactive <strong>Knowledge Graph</strong> and a <strong>RAG-based Q&A system</strong>. It combines <strong>GPT-4o-mini dataset extraction</strong> with <strong>local LLM relation extraction</strong> (Mistral, Qwen, Llama 3, Gemma), stored in <strong>Neo4j</strong>.
-            </p>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">My Contributions</h4>
-<p style="font-size: 14px; margin-bottom: 1.5rem; opacity: 0.85;"><strong>Impact:</strong> Turned a research prototype into a <strong>reusable, publicly deployed tool</strong> by benchmarking better LLMs, packaging it for <strong>PyPI</strong>, and deploying it on <strong>UNT's domain</strong> for external researchers.</p>
-
-            <div class="proj-tags" style="margin-bottom: 1.5rem;">
-                <span class="tag">LLMs</span>
-                <span class="tag">Model Evaluation</span>
-                <span class="tag">RAG</span>
-                <span class="tag">Knowledge Graphs</span>
-                <span class="tag">Neo4j</span>
-                <span class="tag">OpenAI API</span>
-                <span class="tag">Ollama</span>
-                <span class="tag">NLP</span>
-                <span class="tag">Python Packaging (PyPI)</span>
-                <span class="tag">Streamlit</span>
-            </div>
-
-            <a href="https://github.com/d3lab-unt/polarKD" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-        </div>
-
-        <!-- GRID: 3 projects -->
-        <div class="proj-grid">
-
-            <!-- 1. Multimodal Skin Disease -->
-            <div class="proj-card">
-                <div class="proj-img">
-                    <img src="images/multimodal_skin_disease_analysis.png" alt="Skin Disease Analysis">
-                </div>
-                <div class="proj-body">
-                    <h3>Multimodal Skin Disease Analysis</h3>
-                    <p>Built multimodal AI system combining <strong>CNN, NLP,</strong> and <strong>audio analysis</strong> to classify 7 skin diseases with <strong>85.7% accuracy</strong> and <strong>real-time diagnosis under 5 seconds.</strong></p>
-                    <div class="proj-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">NLP (DistilBERT)</span>
-                        <span class="tag">Multimodal AI</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">API Integration</span>
-                    </div>
-                    <div class="proj-btns">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Multimodel-skin-disease-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. Vendor Pipeline -->
-            <div class="proj-card">
-                <div class="proj-img">
-                    <img src="images/vendor_photo.png" alt="Vendor Analytics Pipeline">
-                </div>
-                <div class="proj-body">
-                    <h3>AI-Powered Vendor Analytics Platform</h3>
-                    <p>End-to-end data pipeline that <strong>ingests raw Excel files</strong>, validates and loads them into a <strong>SQL database</strong>, then runs <strong>ML analytics</strong> (Random Forest demand forecasting, Isolation Forest anomaly detection, vendor scoring) with <strong>prioritized email alerts</strong> and live Streamlit dashboards. Cut manual reporting effort by <strong>~95%</strong>.</p>
-                    <div class="proj-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">ETL Pipelines</span>
-                        <span class="tag">SQLAlchemy</span>
-                        <span class="tag">SQLite</span>
-                        <span class="tag">Workflow Automation</span>
-                        <span class="tag">Data Validation</span>
-                        <span class="tag">Random Forest</span>
-                        <span class="tag">Anomaly Detection</span>
-                        <span class="tag">Alerting</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Plotly</span>
-                    </div>
-                    <div class="proj-btns">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Energy Consumption -->
-            <div class="proj-card">
-                <div class="proj-img">
-                    <img src="images/energy_consumption_image.png" alt="Energy Consumption">
-                </div>
-                <div class="proj-body">
-                    <h3>Energy Consumption Analysis</h3>
-                    <p>Forecasted hourly energy demand with <strong>96.91% accuracy</strong> using <strong>LightGBM</strong> and <strong>feature engineering</strong>, enabling <strong>15-20% cost reduction</strong> through predictive optimization.</p>
-                    <div class="proj-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Pandas/NumPy</span>
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">LightGBM/XGBoost</span>
-                        <span class="tag">Time Series Forecasting</span>
-                        <span class="tag">Feature Engineering</span>
-                        <span class="tag">Model Deployment</span>
-                        <span class="tag">Streamlit</span>
-                    </div>
-                    <div class="proj-btns">
-                        <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW PROJECT</a>
-                        <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">LIVE DEMO</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="https://github.com/Aeshwa-Kachhadiya?tab=repositories" target="_blank" class="btn btn-secondary">View All Projects on GitHub →</a>
-        </div>
+  <header>
+    <div class="header-content">
+      <div class="logo">Aeshwa Kachhadiya</div>
+      <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#learning">Learning</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-</section>
-            
+  </header>
 
-<!-- Experience Section -->
-<section id="experience" class="bg-white">
-    <div class="container">
-        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">EXPERIENCE</h2>
-
-        <div class="experience-section">
-
-            <!-- Experience 1: Data Intern - OncoSpark -->
-            <div class="card" style="margin-bottom: 2rem; position: relative;">
-                <span class="tag" style="position: absolute; top: 2rem; right: 2rem;">Current</span>
-                <h3>Data Intern</h3>
-                <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">OncoSpark · Internship</p>
-                <p style="opacity: 0.6; margin-bottom: 1rem;">Southlake, Texas | Aug 2026 - Present</p>
-                <ul>
-                    <li>Proposed, prototyped, and deployed a <strong>modern ETL platform</strong> (SQL Server → Airbyte → PostgreSQL, orchestrated by <strong>Airflow</strong>) on <strong>Azure</strong>, replicating <strong>500+ tables</strong>, now <strong>adopted company-wide</strong></li>
-                    <li>Replaced legacy <strong>ReplicaDB</strong> replication with automated table creation, failure alerts, and full run logs, <strong>eliminating hand-written Python replication logic</strong> and manual pipeline checks</li>
-                    <li>Automated the <strong>AI accuracy dashboard across multiple products</strong> so users can update data and every metric recalculates automatically, with results stored in the <strong>BI warehouse</strong>, <strong>replacing an 8-hour manual process</strong> for the operations team</li>
-                    <li>Building data quality checks with <strong>dbt</strong>, <strong>Azure Data Factory (ADF)</strong>, and <strong>Change Data Capture (CDC)</strong>, and running <strong>POCs</strong> to evaluate new data tools</li>
-                </ul>
-            </div>
-
-            <!-- Experience 2: Research Assistant - D3 Lab, UNT -->
-            <div class="card" style="margin-bottom: 2rem; position: relative;">
-                <span class="tag" style="position: absolute; top: 2rem; right: 2rem;">Current</span>
-                <h3>Research Assistant</h3>
-                <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">D3 Lab · University of North Texas</p>
-                <p style="opacity: 0.6; margin-bottom: 1rem;">Denton, Texas | May 2026 - Present</p>
-                <ul>
-                    <li>Improved the PolarKD toolkit's extraction quality by <strong>~65% (1.7 → 2.8 out of 3)</strong> by benchmarking multiple <strong>LLMs</strong> (GPT-4o-mini, Mistral, Qwen, Llama 3, Gemma) and applying <strong>prompt engineering</strong></li>
-                    <li><strong>Co-authored</strong> a research paper on LLM-powered polar science knowledge discovery, <strong>accepted at an ACM SIGSPATIAL workshop</strong></li>
-                    <li>Developed <strong>modular Python components</strong> and packaged them as installable <strong>PyPI packages</strong></li>
-                    <li><strong>Deployed the toolkit's UI</strong> on UNT's domain and maintained a <strong>version-controlled GitHub codebase</strong> with documentation so external researchers can reproduce and use it</li>
-                </ul>
-            </div>
-
-            <!-- Experience 3: Data Analyst Intern - Outamation -->
-            <div class="card" style="margin-bottom: 2rem;">
-                <h3>Data Analyst Intern</h3>
-                <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">Outamation · Internship</p>
-                <p style="opacity: 0.6; margin-bottom: 1rem;">Southlake, Texas | May 2026 - Aug 2026</p>
-                <ul>
-                    <li>Built an <strong>AI Extraction Accuracy Dashboard</strong> in <strong>Apache Superset</strong> from scratch, tracking <strong>670K+ fields across 40K+ mortgage records</strong> for 12 clients, using confidence-based classification to show where AI extraction fails</li>
-                    <li>Automated daily dashboard reporting with <strong>Python</strong>, <strong>Playwright</strong>, and <strong>Outlook COM</strong> on a scheduler, <strong>saving 4–5 hours of manual work every day</strong></li>
-                    <li>Engineered an <strong>invoice reconciliation engine</strong> that automated PDF extraction, <strong>PostgreSQL</strong> validation, and discrepancy detection</li>
-                    <li>Cleaned, organized, and analyzed data to build <strong>Power BI reports</strong>, and answered <strong>ad hoc business questions</strong> for stakeholders</li>
-                </ul>
-            </div>
-
-            <!-- Experience 4: Data Analyst (Student Assistant) - PDS Mail Services -->
-            <div class="card" style="margin-bottom: 2rem;">
-                <h3>Data Analyst (Student Assistant)</h3>
-                <p style="font-size: 1.125rem; margin-bottom: 0.5rem;">PDS Mail Services · University of North Texas</p>
-                <p style="opacity: 0.6; margin-bottom: 1rem;">Denton, Texas | Oct 2025 - May 2026</p>
-                <ul>
-                    <li>Managed <strong>MS Access</strong> databases with <strong>thousands of records</strong> across <strong>10 university departments</strong>, integrating <strong>CSV</strong> data to keep records accurate</li>
-                    <li>Compiled and distributed <strong>monthly operational and financial reports</strong> to departments across the university</li>
-                    <li>Caught <strong>billing discrepancies</strong> through reconciliation and quality control, and prepared correction reports and <strong>general ledger adjustments</strong></li>
-                    <li>Calculated and allocated shipping costs for <strong>$50K+ in departmental billing</strong>, keeping charges accurate</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-    
-   
-<!-- Skills Section -->
-<section id="skills">
-    <div class="container">
-        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">SKILLS</h2>
-
-        <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-            <div class="card">
-                <h3>Data Engineering</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                    <span class="tag">Apache Airflow</span>
-                    <span class="tag">Airbyte</span>
-                    <span class="tag">dbt</span>
-                    <span class="tag">Azure Data Factory</span>
-                    <span class="tag">Change Data Capture</span>
-                    <span class="tag">ETL/ELT Pipelines</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">Automation</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>AI & Machine Learning</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                    <span class="tag">PyTorch</span>
-                    <span class="tag">TensorFlow</span>
-                    <span class="tag">Scikit-learn</span>
-                    <span class="tag">LightGBM/XGBoost</span>
-                    <span class="tag">LLMs & RAG</span>
-                    <span class="tag">NLP</span>
-                    <span class="tag">Model Evaluation</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Programming & Databases</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                    <span class="tag">Python</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">PostgreSQL</span>
-                    <span class="tag">SQL Server</span>
-                    <span class="tag">MySQL</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">Git/GitHub</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <h3>Analytics & BI</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
-                    <span class="tag">Apache Superset</span>
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Tableau</span>
-                    <span class="tag">Advanced Excel</span>
-                    <span class="tag">Dashboard Design</span>
-                    <span class="tag">Data Storytelling</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Achievements Section -->
-<section id="achievements" class="bg-white">
-    <div class="container">
-        <!-- <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center; margin-bottom: 2rem;">ACHIEVEMENTS & CERTIFICATIONS</h2> -->
-                <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">ACHIEVEMENTS & CERTIFICATIONS</h2>
-
-        <!-- FEATURED: The Mind of a Model -->
-        <div class="card" style="margin-top: 3rem; border-color: rgba(133, 25, 60, 0.4); position: relative;">
-            <span class="tag" style="position: absolute; top: 1.5rem; right: 1.5rem; background: #85193C; color: white; border-color: #85193C;">⭐ Featured</span>
-            <h3 style="font-size: 26px; margin-bottom: 0.5rem; padding-right: 7rem;">The Mind of a Model 🧠</h3>
-            <p style="font-size: 15px; margin-bottom: 1rem; opacity: 0.85;">
-                A <strong>10-day Machine Learning series</strong> documenting the complete journey from <strong>raw data to deployed model</strong>, one concept at a time. Built on a LinkedIn Post Performance dataset (<strong>20 features</strong>) to predict whether a post will go viral, and shared day by day on LinkedIn.
-            </p>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">The Series</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
-                <span class="tag">Day 1 · ML Pipeline</span>
-                <span class="tag">Day 2 · Data Cleaning</span>
-                <span class="tag">Day 3 · Feature Engineering</span>
-                <span class="tag">Day 4 · Model Building</span>
-                <span class="tag">Day 5 · Model Evaluation</span>
-                <span class="tag">Day 6 · Overfitting & Underfitting</span>
-                <span class="tag">Day 7 · Hyperparameter Tuning</span>
-                <span class="tag">Day 8 · Model Comparison</span>
-                <span class="tag">Day 9 · Model Deployment</span>
-                <span class="tag">Day 10 · MLOps</span>
-            </div>
-
-            <h4 style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Tools</h4>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Scikit-learn</span>
-                <span class="tag">Matplotlib</span>
-                <span class="tag">Seaborn</span>
-                <span class="tag">Flask</span>
-                <span class="tag">Jupyter</span>
-                <span class="tag">Google Colab</span>
-            </div>
-
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                <a href="https://github.com/Aeshwa-Kachhadiya/The-mind-of-a-model" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW ON GITHUB</a>
-                <a href="https://www.linkedin.com/in/aeshwakachhadiya/" target="_blank" class="btn btn-secondary" style="font-size: 10px; padding: 0.5rem 1rem;">FOLLOW ON LINKEDIN</a>
-            </div>
-        </div>
-
-        <!-- LEARNING JOURNEYS -->
-        <h3 style="text-align: center; margin: 3rem 0 0; font-size: 22px;">Daily Learning Journeys</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-
-            <div class="card" style="display: flex; flex-direction: column;">
-                <h3>LeetCode SQL Journey</h3>
-                <p style="margin: 0.75rem 0 1rem;">One SQL problem a day from LeetCode's <strong>Top SQL 50</strong>, with optimized queries and multiple approaches per problem.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-                    <span class="tag">Joins</span>
-                    <span class="tag">GROUP BY & HAVING</span>
-                    <span class="tag">Window Functions</span>
-                    <span class="tag">Subqueries & CTEs</span>
-                    <span class="tag">String & Date Functions</span>
-                    <span class="tag">CASE</span>
-                </div>
-                <div style="margin-top: auto;">
-                    <a href="https://github.com/Aeshwa-Kachhadiya/Leetcode-SQL-Journey" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW ON GITHUB</a>
-                </div>
-            </div>
-
-            <div class="card" style="display: flex; flex-direction: column;">
-                <h3>HackerRank SQL Journey</h3>
-                <p style="margin: 0.75rem 0 1rem;">SQL challenges from HackerRank to strengthen database concepts and real-world problem-solving.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-                    <span class="tag">Basic & Advanced Select</span>
-                    <span class="tag">Aggregation</span>
-                    <span class="tag">Basic & Advanced Joins</span>
-                    <span class="tag">Subqueries</span>
-                    <span class="tag">CASE</span>
-                    <span class="tag">Alternative Queries</span>
-                </div>
-                <div style="margin-top: auto;">
-                    <a href="https://github.com/Aeshwa-Kachhadiya/HackerRank-SQL-Journey" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW ON GITHUB</a>
-                </div>
-            </div>
-
-            <div class="card" style="display: flex; flex-direction: column;">
-                <h3>Pandas Learning Journey</h3>
-                <p style="margin: 0.75rem 0 1rem;">Solving the <strong>LeetCode 30 Days of Pandas</strong> study plan to build strong data manipulation and analysis skills.</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-                    <span class="tag">DataFrames & Series</span>
-                    <span class="tag">Filtering</span>
-                    <span class="tag">Data Cleaning</span>
-                    <span class="tag">GroupBy</span>
-                    <span class="tag">Merging & Joining</span>
-                    <span class="tag">String Methods</span>
-                </div>
-                <div style="margin-top: auto;">
-                    <a href="https://github.com/Aeshwa-Kachhadiya/Pandas-Learning-Journey" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.5rem 1rem;">VIEW ON GITHUB</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- CERTIFICATIONS (compact) -->
-        <h3 style="text-align: center; margin: 3rem 0 0; font-size: 22px;">Certifications</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-
-            <div class="card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem;">
-                <div style="flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 75%, #EA4335 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white; font-weight: bold;">G</div>
-                <div>
-                    <h3 style="font-size: 16px; margin-bottom: 0.25rem;">Google Data Analytics Professional Certificate</h3>
-                    <p style="opacity: 0.7; margin-bottom: 0.75rem;">Data cleaning, analysis, visualization, SQL, Tableau &amp; R</p>
-                    <a href="https://www.coursera.org/account/accomplishments/specialization/R370JDIOYX9G" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.4rem 0.9rem;">VIEW CERTIFICATE</a>
-                </div>
-            </div>
-
-            <div class="card" style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem;">
-                <div style="flex-shrink: 0; width: 56px; height: 56px; background: linear-gradient(135deg, #054ADA 0%, #00B4E6 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; font-weight: bold;">IBM</div>
-                <div>
-                    <h3 style="font-size: 16px; margin-bottom: 0.25rem;">IBM Data Science Professional Certificate</h3>
-                    <p style="opacity: 0.7; margin-bottom: 0.75rem;">Machine learning, Python, SQL &amp; data science methods</p>
-                    <a href="https://www.coursera.org/account/accomplishments/specialization/NGMMHMW7760W" target="_blank" class="btn btn-primary" style="font-size: 10px; padding: 0.4rem 0.9rem;">VIEW CERTIFICATE</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <!-- Contact Section -->
-    <section id="contact">
-    <div class="container">
-        <h2 style="font-size: clamp(32px, 6vw, 48px); text-align: center;">CONTACT</h2>
-        <p class="description" style="text-align: center; margin: 0 auto;">
-            I'm always open to discussing new opportunities, collaborations, or data projects. 
-            Feel free to reach out!
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-badge">Master’s in Data Science Candidate · University of North Texas</div>
+        <h1>Aeshwa Kachhadiya</h1>
+        <div class="hero-subtitle">Data Professional focused on Analytics, ETL Pipelines, and Applied AI</div>
+        <p class="hero-description">
+          I build data pipelines, dashboards, and LLM-powered applications that improve accuracy,
+          reduce manual work, and support better decision-making.
         </p>
 
-        <div class="contact-grid">
-            <div>
-                <div class="card" style="margin-bottom: 1.5rem;">
-                    <h3>Email</h3>
-                    <p>aeshwakachhadiya129@gmail.com</p>
-                </div>
-                <div class="card" style="margin-bottom: 1.5rem;">
-                    <h3>Phone</h3>
-                    <p>+1 (940) 597-9239</p>
-                </div>
-                <div class="card">
-                    <h3>LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/aeshwakachhadiya/" target="_blank" style="color: #85193C; text-decoration: none;">linkedin.com/in/aeshwakachhadiya</a></p>
-                </div>
-            </div>
-
-            <!-- KEEP ONLY THIS FORM -->
-            <div class="card">
-                <h3 style="margin-bottom: 1.5rem;">Send a Message</h3>
-                <form action="https://formsubmit.co/aeswa0001@gmail.com" method="POST">
-                    <!-- Honeypot for spam protection -->
-                    <input type="text" name="_honey" style="display:none">
-                    
-                    <!-- Disable reCAPTCHA -->
-                    <input type="hidden" name="_captcha" value="false">
-                    
-                    <!-- Custom redirect after submission (optional) -->
-                    <!-- <input type="hidden" name="_next" value="https://yourportfolio.com/thankyou.html"> -->
-
-                    <!-- Custom subject line -->
-                    <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
-                    
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        Send Message →
-                    </button>
-                </form>
-            </div>
+        <div class="cta-row">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="YOUR_RESUME_LINK_HERE" target="_blank" class="btn btn-secondary">Download Resume</a>
+          <a href="https://github.com/Aeshwa-Kachhadiya" target="_blank" class="btn btn-secondary">GitHub</a>
+          <a href="#contact" class="btn btn-secondary">Contact</a>
         </div>
-    </div>
+
+        <div class="pill-row">
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Data Visualization</span>
+          <span class="pill">ETL Pipelines</span>
+          <span class="pill">Dashboard Automation</span>
+          <span class="pill">LLMs & RAG</span>
+          <span class="pill">Machine Learning</span>
+          <span class="pill">Model Evaluation</span>
+        </div>
+      </div>
     </section>
-```
 
----
+    <section id="about" class="section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">About</div>
+          <h2>Building reliable data and AI systems</h2>
+        </div>
 
+        <div class="two-col">
+          <div class="card">
+            <h3>My Background</h3>
+            <p>
+              I’m a Master’s in Data Science student at the University of North Texas with experience
+              building analytics dashboards, ETL pipelines, and LLM-powered applications. My work focuses
+              on turning manual, error-prone workflows into reliable systems that improve accuracy,
+              save time, and support better decisions.
+            </p>
+            <br />
+            <p>
+              Across internships and research, I’ve automated reporting workflows, modernized data
+              movement across systems, built AI accuracy dashboards, and developed tools using LLMs,
+              RAG, and knowledge graphs. I’m especially interested in roles at the intersection of
+              analytics, automation, data engineering, and applied AI.
+            </p>
+          </div>
 
+          <div style="display: grid; gap: 1.5rem;">
+            <div class="card">
+              <h3>Education</h3>
+              <div class="education-block">
+                <div class="education-item">
+                  <h4>Master of Science in Data Science</h4>
+                  <div class="muted-small">University of North Texas</div>
+                  <div class="muted-small">Denton, Texas · Aug 2025 – May 2027</div>
+                </div>
+                <div class="education-item">
+                  <h4>Bachelor of Engineering in Computer Engineering</h4>
+                  <div class="muted-small">LDRP Institute of Technology and Research</div>
+                  <div class="muted-small">Gandhinagar, India · Oct 2021 – July 2025</div>
+                </div>
+              </div>
+            </div>
 
- 
-    
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+            <div class="card">
+              <h3>What I Bring</h3>
+              <ul class="list-clean">
+                <li><strong>End-to-End Delivery</strong> — from raw data and transformation to dashboards, models, and deployment</li>
+                <li><strong>Automation Mindset</strong> — focused on reducing repetitive manual work through scalable workflows</li>
+                <li><strong>Analytics + Engineering Blend</strong> — comfortable across reporting, SQL, pipelines, and data quality</li>
+                <li><strong>Applied AI Experience</strong> — hands-on with LLMs, RAG, evaluation, and knowledge graph systems</li>
+                <li><strong>Reproducible Development</strong> — modular code, documentation, packaging, and version control</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Active nav link
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Experience</div>
+          <h2>Professional experience</h2>
+          <p>Internships and research roles where I’ve built analytics systems, modernized pipelines, and delivered measurable impact.</p>
+        </div>
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        <div class="experience-list">
+          <div class="experience-card">
+            <div class="status-badge">Current</div>
+            <h3>Data Intern</h3>
+            <div class="role-meta">
+              <div class="role-company">OncoSpark · Internship</div>
+              <div class="role-date">Southlake, Texas · Aug 2026 – Present</div>
+            </div>
+            <ul>
+              <li>Designed and deployed a modern ETL platform using SQL Server, Airbyte, PostgreSQL, and Airflow on Azure to replicate <strong>500+ tables</strong>; the solution is now being adopted company-wide.</li>
+              <li>Replaced legacy replication workflows with automated table creation, failure alerts, and centralized run logging, eliminating manual Python replication scripts and reducing monitoring overhead.</li>
+              <li>Automated AI accuracy dashboard processing across multiple products so metric calculations refresh dynamically after data updates, replacing an <strong>8-hour manual workflow</strong> for operations teams.</li>
+              <li>Built data quality checks using <strong>dbt</strong>, <strong>Azure Data Factory</strong>, and <strong>CDC</strong> workflows while evaluating new tooling through proof-of-concept implementations.</li>
+            </ul>
+          </div>
 
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+          <div class="experience-card">
+            <div class="status-badge">Current</div>
+            <h3>Research Assistant</h3>
+            <div class="role-meta">
+              <div class="role-company">D3 Lab · University of North Texas</div>
+              <div class="role-date">Denton, Texas · May 2026 – Present</div>
+            </div>
+            <ul>
+              <li>Improved extraction quality of the PolarKD toolkit by approximately <strong>65%</strong> by benchmarking multiple LLMs, refining prompts, and evaluating output quality across extraction tasks.</li>
+              <li>Co-authored a research paper on LLM-powered polar science knowledge discovery accepted at an <strong>ACM SIGSPATIAL workshop</strong>.</li>
+              <li>Developed modular Python components, packaged them for <strong>PyPI</strong>, and supported reproducible workflows for research use.</li>
+              <li>Deployed the toolkit on UNT’s domain and maintained a documented, version-controlled GitHub codebase for external researchers.</li>
+            </ul>
+          </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+          <div class="experience-card">
+            <h3>Data Analyst Intern</h3>
+            <div class="role-meta">
+              <div class="role-company">Outamation · Internship</div>
+              <div class="role-date">Southlake, Texas · May 2026 – Aug 2026</div>
+            </div>
+            <ul>
+              <li>Built an AI Extraction Accuracy Dashboard in <strong>Apache Superset</strong> to monitor <strong>670K+ fields</strong> across <strong>40K+ mortgage records</strong> for 12 clients using confidence-based failure analysis.</li>
+              <li>Automated daily dashboard reporting with Python, Playwright, and Outlook COM, saving <strong>4–5 hours of manual work per day</strong>.</li>
+              <li>Engineered an invoice reconciliation workflow using PDF extraction, PostgreSQL validation, and discrepancy detection.</li>
+              <li>Analyzed operational data and developed Power BI reports to answer ad hoc business questions for stakeholders.</li>
+            </ul>
+          </div>
 
-        // Observe project items
-        document.querySelectorAll('.project-item').forEach(item => {
-            observer.observe(item);
-        });
+          <div class="experience-card">
+            <h3>Data Analyst (Student Assistant)</h3>
+            <div class="role-meta">
+              <div class="role-company">PDS Mail Services · University of North Texas</div>
+              <div class="role-date">Denton, Texas · Oct 2025 – May 2026</div>
+            </div>
+            <ul>
+              <li>Maintained MS Access databases containing thousands of records across <strong>10 university departments</strong>, integrating CSV data to ensure record accuracy and consistency.</li>
+              <li>Prepared and distributed monthly operational and financial reports for university departments.</li>
+              <li>Identified billing discrepancies through reconciliation and quality control, then prepared correction reports and general ledger adjustments.</li>
+              <li>Calculated and allocated shipping costs for <strong>$$50\text{K}+$$</strong> in departmental billing while maintaining accurate charge records.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Observe cards
-        document.querySelectorAll('.card').forEach(card => {
-            observer.observe(card);
-        });
+    <section id="projects" class="section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Projects</div>
+          <h2>Selected technical projects</h2>
+          <p>Projects that reflect my strengths in applied AI, analytics automation, ETL workflows, and production-minded development.</p>
+        </div>
 
-        // Hide/show header on scroll - REMOVED
-        // Now header stays visible all the time
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
+        <div class="card featured-project">
+          <div class="featured-tag">Featured Research Project</div>
+          <h3>Polar Knowledge Explorer (PolarKD)</h3>
+          <p style="margin-bottom: 0.75rem;"><strong>D3 Lab · University of North Texas</strong></p>
+          <p style="margin-bottom: 1rem;">
+            Built and deployed an LLM-powered research toolkit for polar science that extracts datasets, keywords,
+            and causal relationships from scientific papers, stores them in Neo4j, and supports question answering
+            through a RAG interface.
+          </p>
+          <p style="margin-bottom: 1rem;">
+            Improved extraction quality through model benchmarking and prompt optimization, packaged reusable
+            components for PyPI, and deployed the tool on UNT’s domain for external researchers.
+          </p>
+          <div class="tag-row" style="margin-bottom: 1.25rem;">
+            <span class="tag">LLMs</span>
+            <span class="tag">RAG</span>
+            <span class="tag">Knowledge Graphs</span>
+            <span class="tag">Neo4j</span>
+            <span class="tag">OpenAI API</span>
+            <span class="tag">Ollama</span>
+            <span class="tag">Model Evaluation</span>
+            <span class="tag">PyPI</span>
+            <span class="tag">Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/d3lab-unt/polarKD" target="_blank" class="btn btn-primary">View Project</a>
+          </div>
+        </div>
 
-        // Cursor trail effect
-        const cursorDots = [];
-        const maxDots = 10;
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="images/multimodal_skin_disease_analysis.png" alt="Multimodal Skin Disease Analysis">
+            </div>
+            <div class="project-body">
+              <h3>Multimodal Skin Disease Analysis</h3>
+              <p>
+                Developed a multimodal prototype for skin disease classification using image, text, and audio inputs.
+                Combined CNN-based image modeling with NLP features to classify 7 disease categories, achieving
+                <strong>85.7% accuracy</strong> and returning predictions in under 5 seconds through a Streamlit interface.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">TensorFlow</span>
+                <span class="tag">Computer Vision</span>
+                <span class="tag">DistilBERT</span>
+                <span class="tag">Multimodal AI</span>
+                <span class="tag">Transformers</span>
+                <span class="tag">Streamlit</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Aeshwa-Kachhadiya/Multimodel-skin-disease-analysis" target="_blank" class="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
 
-        for (let i = 0; i < maxDots; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'cursor-dot';
-            dot.style.opacity = 1 - (i / maxDots);
-            document.body.appendChild(dot);
-            cursorDots.push(dot);
+          <div class="project-card">
+            <div class="project-image">
+              <img src="images/vendor_photo.png" alt="Vendor Analytics Platform">
+            </div>
+            <div class="project-body">
+              <h3>AI-Powered Vendor Analytics Platform</h3>
+              <p>
+                Built an end-to-end vendor analytics pipeline that ingests Excel files, validates and loads them into a
+                SQL database, and applies forecasting, anomaly detection, and vendor scoring models. Added prioritized
+                email alerts and live dashboards, reducing manual reporting effort by approximately <strong>95%</strong>.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">ETL Pipelines</span>
+                <span class="tag">SQLAlchemy</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">Data Validation</span>
+                <span class="tag">Random Forest</span>
+                <span class="tag">Isolation Forest</span>
+                <span class="tag">Alerting</span>
+                <span class="tag">Plotly</span>
+                <span class="tag">Streamlit</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Aeshwa-Kachhadiya/Vendor-performance-analysis" target="_blank" class="btn btn-primary">View Project</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="images/energy_consumption_image.png" alt="Energy Consumption Analysis">
+            </div>
+            <div class="project-body">
+              <h3>Energy Consumption Analysis</h3>
+              <p>
+                Built a time-series forecasting model for hourly energy demand using LightGBM and feature engineering,
+                achieving <strong>96.91% prediction accuracy</strong>. Designed the system to support demand planning
+                and more efficient energy usage forecasting.
+              </p>
+              <div class="tag-row">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">LightGBM</span>
+                <span class="tag">XGBoost</span>
+                <span class="tag">Time Series</span>
+                <span class="tag">Feature Engineering</span>
+                <span class="tag">Streamlit</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Aeshwa-Kachhadiya/Energy-Consumption-Analysis" target="_blank" class="btn btn-primary">View Project</a>
+                <a href="https://energyconsumptiontimeseriesforecasting-hnshvkhbjnhr8zssvhwqvb.streamlit.app/" target="_blank" class="btn btn-secondary">Live Demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="https://github.com/Aeshwa-Kachhadiya?tab=repositories" target="_blank" class="btn btn-secondary">View More on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Skills</div>
+          <h2>Technical toolkit</h2>
+          <p>Tools and technologies I use across analytics, data engineering, and applied AI workflows.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="card skills-card">
+            <h3>Languages & Databases</h3>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Neo4j</span>
+              <span class="tag">MS Access</span>
+            </div>
+          </div>
+
+          <div class="card skills-card">
+            <h3>Data Engineering</h3>
+            <div class="tag-row">
+              <span class="tag">Airflow</span>
+              <span class="tag">Airbyte</span>
+              <span class="tag">dbt</span>
+              <span class="tag">Azure Data Factory</span>
+              <span class="tag">CDC</span>
+              <span class="tag">ETL / ELT</span>
+              <span class="tag">Azure</span>
+              <span class="tag">SQLAlchemy</span>
+            </div>
+          </div>
+
+          <div class="card skills-card">
+            <h3>Analytics & BI</h3>
+            <div class="tag-row">
+              <span class="tag">Apache Superset</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Excel</span>
+              <span class="tag">Dashboard Design</span>
+              <span class="tag">Data Storytelling</span>
+              <span class="tag">Playwright</span>
+            </div>
+          </div>
+
+          <div class="card skills-card">
+            <h3>AI / Machine Learning</h3>
+            <div class="tag-row">
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">LightGBM</span>
+              <span class="tag">XGBoost</span>
+              <span class="tag">NLP</span>
+              <span class="tag">LLMs</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Model Evaluation</span>
+              <span class="tag">Streamlit</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning" class="section-alt">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Learning & Certifications</div>
+          <h2>Technical practice and continuous learning</h2>
+          <p>Public learning artifacts that reflect consistency, problem-solving practice, and technical communication.</p>
+        </div>
+
+        <div class="card featured-project" style="margin-bottom: 2rem;">
+          <div class="featured-tag">Featured Series</div>
+          <h3>The Mind of a Model</h3>
+          <p style="margin-bottom: 1rem;">
+            A 10-day machine learning series documenting the journey from raw data to deployed model using a LinkedIn Post Performance dataset with 20 features.
+          </p>
+          <div class="tag-row" style="margin-bottom: 1rem;">
+            <span class="tag">ML Pipeline</span>
+            <span class="tag">Data Cleaning</span>
+            <span class="tag">Feature Engineering</span>
+            <span class="tag">Model Evaluation</span>
+            <span class="tag">Hyperparameter Tuning</span>
+            <span class="tag">Model Deployment</span>
+            <span class="tag">MLOps</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Aeshwa-Kachhadiya/The-mind-of-a-model" target="_blank" class="btn btn-primary">View on GitHub</a>
+            <a href="https://www.linkedin.com/in/aeshwakachhadiya/" target="_blank" class="btn btn-secondary">View LinkedIn</a>
+          </div>
+        </div>
+
+        <div class="learning-grid" style="margin-bottom: 2rem;">
+          <div class="card">
+            <h3>LeetCode SQL Journey</h3>
+            <p style="margin-bottom: 1rem;">
+              Worked through LeetCode’s Top SQL 50 with optimized queries and multiple approaches across joins, aggregations, CTEs, and window functions.
+            </p>
+            <div class="tag-row" style="margin-bottom: 1rem;">
+              <span class="tag">Joins</span>
+              <span class="tag">GROUP BY</span>
+              <span class="tag">HAVING</span>
+              <span class="tag">Window Functions</span>
+              <span class="tag">CTEs</span>
+              <span class="tag">CASE</span>
+            </div>
+            <a href="https://github.com/Aeshwa-Kachhadiya/Leetcode-SQL-Journey" target="_blank" class="btn btn-primary">View on GitHub</a>
+          </div>
+
+          <div class="card">
+            <h3>HackerRank SQL Journey</h3>
+            <p style="margin-bottom: 1rem;">
+              Practiced SQL challenges across select queries, joins, aggregation, subqueries, and conditional logic to strengthen database problem-solving.
+            </p>
+            <div class="tag-row" style="margin-bottom: 1rem;">
+              <span class="tag">Select</span>
+              <span class="tag">Aggregation</span>
+              <span class="tag">Joins</span>
+              <span class="tag">Subqueries</span>
+              <span class="tag">CASE</span>
+            </div>
+            <a href="https://github.com/Aeshwa-Kachhadiya/HackerRank-SQL-Journey" target="_blank" class="btn btn-primary">View on GitHub</a>
+          </div>
+
+          <div class="card">
+            <h3>Pandas Learning Journey</h3>
+            <p style="margin-bottom: 1rem;">
+              Completed LeetCode’s 30 Days of Pandas to strengthen data manipulation, grouping, filtering, merging, and string processing skills.
+            </p>
+            <div class="tag-row" style="margin-bottom: 1rem;">
+              <span class="tag">DataFrames</span>
+              <span class="tag">Filtering</span>
+              <span class="tag">Data Cleaning</span>
+              <span class="tag">GroupBy</span>
+              <span class="tag">Merge</span>
+              <span class="tag">String Methods</span>
+            </div>
+            <a href="https://github.com/Aeshwa-Kachhadiya/Pandas-Learning-Journey" target="_blank" class="btn btn-primary">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="cert-grid">
+          <div class="card">
+            <h3>Google Data Analytics Professional Certificate</h3>
+            <p style="margin-bottom: 1rem;">Data cleaning, analysis, visualization, SQL, Tableau, and R.</p>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/R370JDIOYX9G" target="_blank" class="btn btn-primary">View Certificate</a>
+          </div>
+
+          <div class="card">
+            <h3>IBM Data Science Professional Certificate</h3>
+            <p style="margin-bottom: 1rem;">Machine learning, Python, SQL, and core data science methods.</p>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/NGMMHMW7760W" target="_blank" class="btn btn-primary">View Certificate</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Contact</div>
+          <h2>Let’s connect</h2>
+          <p>I’m open to internships, early-career opportunities, research collaborations, and data-focused projects.</p>
+        </div>
+
+        <div class="contact-grid secondary">
+          <div style="display: grid; gap: 1rem;">
+            <div class="contact-card">
+              <h3>Email</h3>
+              <p><a href="mailto:aeshwakachhadiya129@gmail.com" style="color: var(--primary);">aeshwakachhadiya129@gmail.com</a></p>
+            </div>
+
+            <div class="contact-card">
+              <h3>Phone</h3>
+              <p><a href="tel:+19405979239" style="color: var(--primary);">+1 (940) 597-9239</a></p>
+            </div>
+
+            <div class="contact-card">
+              <h3>LinkedIn</h3>
+              <p><a href="https://www.linkedin.com/in/aeshwakachhadiya/" target="_blank" style="color: var(--primary);">linkedin.com/in/aeshwakachhadiya</a></p>
+            </div>
+
+            <div class="contact-card">
+              <h3>GitHub</h3>
+              <p><a href="https://github.com/Aeshwa-Kachhadiya" target="_blank" style="color: var(--primary);">github.com/Aeshwa-Kachhadiya</a></p>
+            </div>
+
+            <div class="contact-card">
+              <h3>Resume</h3>
+              <p><a href="YOUR_RESUME_LINK_HERE" target="_blank" style="color: var(--primary);">Download Resume</a></p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3 style="margin-bottom: 1rem;">Send a Message</h3>
+            <form action="https://formsubmit.co/aeswa0001@gmail.com" method="POST">
+              <input type="text" name="_honey" style="display:none">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note container">
+      Built to present experience clearly, highlight impact, and make it easy for recruiters to evaluate fit.
+    </div>
+  </main>
+
+  <script>
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a");
+
+    function setActiveLink() {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
         }
+      });
 
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentX = 0;
-        let currentY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            currentX += (mouseX - currentX) * 0.1;
-            currentY += (mouseY - currentY) * 0.1;
-
-            cursorDots.forEach((dot, index) => {
-                const nextDot = cursorDots[index + 1] || cursorDots[0];
-                const x = currentX;
-                const y = currentY;
-
-                dot.style.left = x + 'px';
-                dot.style.top = y + 'px';
-
-                if (index > 0) {
-                    const prevDot = cursorDots[index - 1];
-                    const prevX = parseFloat(prevDot.style.left);
-                    const prevY = parseFloat(prevDot.style.top);
-                    dot.style.left = prevX + (x - prevX) * 0.5 + 'px';
-                    dot.style.top = prevY + (y - prevY) * 0.5 + 'px';
-                }
-            });
-
-            requestAnimationFrame(animateCursor);
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
         }
+      });
+    }
 
-        animateCursor();
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.highlight-card, h1, h2');
-            
-            parallaxElements.forEach(el => {
-                const speed = el.dataset.speed || 0.5;
-                el.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
-            });
-        });
-
-        // Button hover effect
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('mouseenter', function(e) {
-                const x = e.pageX - this.offsetLeft;
-                const y = e.pageY - this.offsetTop;
-                
-                const ripple = document.createElement('span');
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
-
-        // Form submission animation
-        const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', () => {
-                const button = form.querySelector('button[type="submit"]');
-                button.textContent = 'Sending...';
-                button.style.transform = 'scale(0.95)';
-            });
-        }
-
-        // Add stagger animation to cards on scroll
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            cardObserver.observe(card);
-        });
-
-        // Rotating text animation with word-by-word effect
-        // Rotating text animation with typing effect (letter by letter with proper word spacing)
-        const rotatingText = document.getElementById('rotating-text');
-        const texts = [
-            'tech enthusiast',
-            'passionate about impact',
-            'driven by insights',
-            'creative thinker',
-            'obsessed with optimization'
-        ];
-        let currentIndex = 0;
-        let isTyping = false;
-
-        function typeText() {
-            if (isTyping) return;
-            isTyping = true;
-            
-            // Fade out current text
-            rotatingText.style.opacity = '0';
-            
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % texts.length;
-                const text = texts[currentIndex];
-                rotatingText.innerHTML = '';
-                rotatingText.style.opacity = '1';
-                
-                // Create a container for the letters
-                const letterContainer = document.createElement('span');
-                letterContainer.style.display = 'inline-block';
-                letterContainer.style.whiteSpace = 'pre'; // Preserve spaces
-                rotatingText.appendChild(letterContainer);
-                
-                // Type each letter one by one (including spaces)
-                let letterIndex = 0;
-                
-                function typeLetter() {
-                    if (letterIndex < text.length) {
-                        const char = text[letterIndex];
-                        const letter = document.createElement('span');
-                        letter.textContent = char;
-                        letter.style.display = 'inline-block';
-                        letter.style.opacity = '0';
-                        letter.style.transform = 'translateX(10px)';
-                        letter.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-                        
-                        // If it's a space, make sure it takes up proper width
-                        if (char === ' ') {
-                            letter.style.width = '0.3em';
-                        }
-                        
-                        letterContainer.appendChild(letter);
-                        
-                        // Animate the letter
-                        setTimeout(() => {
-                            letter.style.opacity = '1';
-                            letter.style.transform = 'translateX(0)';
-                        }, 10);
-                        
-                        letterIndex++;
-                        setTimeout(typeLetter, 80); // 80ms delay between each letter
-                    } else {
-                        isTyping = false;
-                    }
-                }
-                
-                typeLetter();
-            }, 400);
-        }
-
-        // Initial setup - type the first text
-        const initialText = texts[0];
-        rotatingText.innerHTML = '';
-        const initialContainer = document.createElement('span');
-        initialContainer.style.display = 'inline-block';
-        initialContainer.style.whiteSpace = 'pre';
-        rotatingText.appendChild(initialContainer);
-
-        let initialIndex = 0;
-        function typeInitial() {
-            if (initialIndex < initialText.length) {
-                const char = initialText[initialIndex];
-                const letter = document.createElement('span');
-                letter.textContent = char;
-                letter.style.display = 'inline-block';
-                letter.style.opacity = '0';
-                letter.style.transform = 'translateX(10px)';
-                letter.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-                
-                if (char === ' ') {
-                    letter.style.width = '0.3em';
-                }
-                
-                initialContainer.appendChild(letter);
-                
-                setTimeout(() => {
-                    letter.style.opacity = '1';
-                    letter.style.transform = 'translateX(0)';
-                }, 10);
-                
-                initialIndex++;
-                setTimeout(typeInitial, 80);
-            }
-        }
-        
-        typeInitial();
-
-        // Rotate text every 4 seconds
-        setInterval(typeText, 4000);
-
-
-        // Skill pill hover effect
-        // Skill pill hover effect (works for ALL hero pills)
-        document.querySelectorAll('[style*="rgba(255, 255, 255, 0.5)"]').forEach(pill => {
-            const originalStyle = pill.getAttribute('style');
-
-            pill.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(133, 25, 60, 0.08)';
-                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
-                this.style.boxShadow = '0 8px 20px rgba(133, 25, 60, 0.2)';
-                this.style.transform = 'translateY(-3px)';
-                this.style.cursor = 'pointer';
-            });
-
-            pill.addEventListener('mouseleave', function() {
-                this.setAttribute('style', originalStyle);
-                this.style.transition = 'all 0.3s ease';
-            });
-        });
-
-        // About section cards hover effect
-        document.querySelectorAll('#about .card').forEach(card => {
-            const originalBg = card.style.background || 'white';
-            
-            card.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(133, 25, 60, 0.05)';
-                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
-                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.background = originalBg;
-                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
-                this.style.boxShadow = '';
-                this.style.transform = '';
-            });
-        });
-
-        // Skills section cards hover effect
-        document.querySelectorAll('#skills .card').forEach(card => {
-            const originalBg = card.style.background || 'white';
-            
-            card.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(133, 25, 60, 0.05)';
-                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
-                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.background = originalBg;
-                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
-                this.style.boxShadow = '';
-                this.style.transform = '';
-            });
-        });
-
-        // Contact section cards hover effect
-        document.querySelectorAll('#contact .card').forEach(card => {
-            const originalBg = card.style.background || 'white';
-            
-            card.addEventListener('mouseenter', function() {
-                this.style.background = 'rgba(133, 25, 60, 0.05)';
-                this.style.borderColor = 'rgba(133, 25, 60, 0.5)';
-                this.style.boxShadow = '0 20px 50px rgba(133, 25, 60, 0.3)';
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.background = originalBg;
-                this.style.borderColor = 'rgba(35, 35, 35, 0.1)';
-                this.style.boxShadow = '';
-                this.style.transform = '';
-            });
-        });
-    </script>
+    window.addEventListener("scroll", setActiveLink);
+    setActiveLink();
+  </script>
 </body>
 </html>
